@@ -1,0 +1,13 @@
+main {
+  margin-top: -51px;
+
+  @include mobile {
+    margin-top: -61px;
+  }
+  @include tablet {
+    margin-top: -81px;
+  }
+  @include desktop {
+    margin-top: -101px;
+  }
+}

@@ -45,6 +45,12 @@ a {
   color: currentColor;
 }
 
+button{
+  border: none;
+  background: none;
+  outline: none;
+}
+
 a,
 button {
   cursor: pointer;

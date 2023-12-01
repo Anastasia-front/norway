@@ -1,4 +1,4 @@
 export function Activities() {
-   return <h1>Activities</h1>;
+   return <div id="Activities">Activities</div>;
  }
  

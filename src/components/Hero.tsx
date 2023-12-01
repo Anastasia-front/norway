@@ -1,4 +1,4 @@
 export function Hero() {
-   return <h1>Hero</h1>;
+   return <div id="Hero" className="hero">Hero</div>;
  }
  

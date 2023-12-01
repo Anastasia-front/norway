@@ -1,4 +1,4 @@
 export function AboutUs() {
-   return <h1>AboutUs</h1>;
+   return <div id="About us">AboutUs</div>;
  }
  
