@@ -1,0 +1,27 @@
+$color-grey-dark-1: #6d6d6d;
+$color-grey-dark-2: #3d3d3d;
+$color-grey-light-1: #f4f4f4;
+$color-grey-light-2: #dbdbdb;
+$color-grey-1: #9b9b9b;
+$color-grey-2: #4e4e4e;
+$color-black: #2d2d2d;
+$color-white: #fff;
+$color-orange: #ff9921;
+$color-overlay: rgba(0, 0, 0, 0.7);
+
+//screens
+$screen-mobile: 480px;
+$screen-tablet: 768px;
+$screen-desktop: 1200px;
+
+//cubic
+$cubic: all 0.3s ease-out;
+
+//font-size
+:root {
+  --font-size-xs: 16px;
+  --font-size-sm: 20px;
+  --font-size-md: 24px;
+  --font-size-lg: 48px;
+  --font-size-xl: 66px;
+}
