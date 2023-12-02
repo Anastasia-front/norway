@@ -33,7 +33,7 @@ export function Header() {
     : "navigation-column";
 
   return (
-    <header>
+    <header className="container header">
       <Link to="Hero" className={`logo ${classNameLogo}`}>
         <img src="/logo.svg" alt="logo" />
         <p>TRAVELx</p>

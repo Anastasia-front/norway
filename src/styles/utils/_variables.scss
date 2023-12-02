@@ -6,6 +6,8 @@ $color-grey-1: #9b9b9b;
 $color-grey-2: #4e4e4e;
 $color-black: #2d2d2d;
 $color-white: #fff;
+$color-white-opacity-1: rgba(255, 255, 255, 0.10);
+$color-white-opacity-4: rgba(255, 255, 255, 0.40);
 $color-orange: #ff9921;
 $color-overlay: rgba(0, 0, 0, 0.7);
 
@@ -24,4 +26,5 @@ $cubic: all 0.3s ease-out;
   --font-size-md: 24px;
   --font-size-lg: 48px;
   --font-size-xl: 66px;
+  --font-size-xxl: 160px;
 }

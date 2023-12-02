@@ -11,3 +11,60 @@ main {
     margin-top: -101px;
   }
 }
+
+.button{
+&-chevron {
+  width: 50px;
+  height: 50px;
+  svg {
+    width: 40px;
+    height: 40px;
+    fill: $color-white;
+
+    &:hover {
+      fill: $color-grey-light-2;
+    }
+  }
+}
+
+&-reverse{
+  @include flex(row,center,center);
+  gap: 7px;
+  width: max-content;
+  color: $color-white;
+  transform: rotate(-90deg);
+  transform-origin: left bottom; /* Optional: Set the rotation origin */
+  white-space: nowrap;
+ padding-top: 90px;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    fill: $color-white;
+
+    &:hover {
+      fill: $color-grey-light-2;
+    }
+  }
+}
+}
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.loading-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to right, #5fff7494, #7bfea49f, #ffef5fb1);
+  background-color: $color-black;
+  background-size: 200% 100%;
+  animation: gradientAnimation 3s linear infinite;
+}

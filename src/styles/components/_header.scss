@@ -1,6 +1,7 @@
-header {
+.header {
   @include flex(row, space-between, center);
   color: $color-white;
+
 
   padding: 10px 12px 0;
 
@@ -18,7 +19,7 @@ header {
 .navigation {
   @include flex(row, space-between, center);
   gap: 24px;
-  color: $color-white;
+
   font-size: var(--font-size-sm);
   z-index: 7;
 
@@ -27,12 +28,14 @@ header {
   }
 
   a:hover {
-    color: $color-grey-1;
+    color: $color-grey-light-2;
   }
 
   .active:hover {
     color: none;
   }
+
+  
 
   &-column {
     @include flex(column, center, center);
@@ -69,7 +72,7 @@ header {
     }
     &:hover {
       svg {
-        color: $color-grey-2;
+        color: $color-grey-light-2;
       }
     }
   }
@@ -82,7 +85,7 @@ header {
     width: 100vw;
     height: 100vh;
     background: $color-grey-light-2;
-   }
+  }
 
   &-column {
     @include flex(column, flex-start, center);
@@ -112,7 +115,7 @@ header {
 
   &:hover {
     p {
-      color: $color-grey-1;
+      color: $color-grey-light-2;
     }
     img {
       opacity: 0.7;
