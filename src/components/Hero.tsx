@@ -5,6 +5,7 @@ import { TbArrowNarrowLeft } from "react-icons/tb";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
 import { Link } from "react-scroll";
+import { Portal } from ".";
 
 const socials = ["facebook", "twitter", "youtube", "instagram", "dribble"];
 
@@ -14,6 +15,7 @@ export function Hero() {
   const amountOfBgs = 7;
   const [activeBg, setActiveBg] = useState(1);
   const [isVisible, setIsVisible] = useState(true);
+  const [isMapOpen, setIsMapOpen] = useState(false);
 
   const handleClickNext = () => {
     setIsVisible(false);
@@ -41,9 +43,7 @@ export function Hero() {
   return (
     <section
       id="Hero"
-      className={`hero bg-${activeBg} ${
-        isVisible ? "" : "loading-container"
-      }`}
+      className={`hero bg-${activeBg} ${isVisible ? "" : "loading-container"}`}
     >
       <div className="container hero-content">
         <div className="blockOfElements">
@@ -80,22 +80,48 @@ export function Hero() {
           <ul className="locations">
             {cities.map((city) => (
               <li key={city}>
-                <CiLocationOn />
-                <div>
-                  <h6> {city} </h6>
-                  <p>Plan a trip</p>
+                <div
+                  className="locations-block"
+                  onClick={() => {
+                    setIsMapOpen(true);
+                  }}
+                >
+                  <CiLocationOn />
+                  <div>
+                    <h6> {city} </h6>
+                    <p>Plan a trip</p>
+                  </div>
                 </div>
+                {isMapOpen && (
+                  <Portal wrapperId="map">
+                    <iframe
+                      src="city"
+                      allowFullScreen={false}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="map"
+                    />
+                  </Portal>
+                )}
               </li>
             ))}
           </ul>
 
           <div className="pagination">
-            <button  className="button-chevron" type="button" onClick={handleClickPrev}>
+            <button
+              className="button-chevron"
+              type="button"
+              onClick={handleClickPrev}
+            >
               <VscChevronLeft />
             </button>
             <p>
-              <span className="activeBg"> {activeBg <= 9 && 0}{activeBg}</span>
-              /{amountOfBgs <= 9 && 0}{amountOfBgs}
+              <span className="activeBg">
+                {activeBg <= 9 && 0}
+                {activeBg}{" "}
+              </span>
+              / {amountOfBgs <= 9 && 0}
+              {amountOfBgs}
             </p>
           </div>
         </div>

@@ -1,18 +1,16 @@
 .header {
   @include flex(row, space-between, center);
   color: $color-white;
-
-
-  padding: 10px 12px 0;
+  padding: 10px 10px 0;
 
   @include mobile {
-    padding: 20px 24px 0;
+    padding: 20px 20px 0;
   }
   @include tablet {
-    padding: 40px 36px 0;
+    padding: 30px 32px 0;
   }
   @include desktop {
-    padding: 60px 48px 0;
+    padding: 40px 16px 0;
   }
 }
 
@@ -28,14 +26,12 @@
   }
 
   a:hover {
-    color: $color-grey-light-2;
+    color: $color-grey-1;
   }
 
   .active:hover {
     color: none;
   }
-
-  
 
   &-column {
     @include flex(column, center, center);
@@ -72,7 +68,7 @@
     }
     &:hover {
       svg {
-        color: $color-grey-light-2;
+        color: $color-grey-1;
       }
     }
   }
@@ -84,7 +80,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: $color-grey-light-2;
+    background: $color-grey-1;
   }
 
   &-column {
@@ -115,7 +111,7 @@
 
   &:hover {
     p {
-      color: $color-grey-light-2;
+      color: $color-grey-1;
     }
     img {
       opacity: 0.7;

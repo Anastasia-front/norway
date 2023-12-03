@@ -1,28 +1,29 @@
 .hero {
-  height: 100vh;
+  height: max-content;
   width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  padding-bottom: 80px;
 
   &-content {
     @include flex(column, center, center);
     gap: 200px;
-    padding: 10% 12px 0;
+    padding: 10% 10px 0;
 
     @include mobile {
-      padding: 12% 24px 0;
+      padding: 12% 20px 0;
     }
     @include tablet {
-      padding: 15% 36px 0;
+      padding: 15% 32px 0;
     }
     @include desktop {
-      padding: 20% 48px 0;
+      padding: 20% 16px 0;
     }
   }
 }
 
-.activeBg{
+.activeBg {
   font-weight: 600;
   font-size: var(--font-size-sm);
   color: $color-white;
@@ -52,10 +53,9 @@
 
 .blockOfElements {
   @include flex(row, space-between, center);
-  gap: 190px;
+  width: 100%;
 
   &-second {
-    gap: 100px;
     padding-left: 40px;
   }
 }
@@ -78,7 +78,7 @@
         height: 20px;
 
         &:hover {
-          fill: $color-grey-light-2;
+          fill: $color-grey-1;
         }
       }
     }
@@ -107,14 +107,18 @@
   gap: 35px;
   margin-left: -120px;
 
-  li {
+  &-block{
     @include flex(row, flex-start, center);
     gap: 25px;
     color: $color-white-opacity-4;
     border-radius: 5px;
     background: $color-white-opacity-1;
     width: 190px;
-    padding: 20px 35px;
+    padding: 20px 50px 20px 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     svg {
       width: 32px;

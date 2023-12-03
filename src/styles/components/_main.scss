@@ -5,50 +5,49 @@ main {
     margin-top: -61px;
   }
   @include tablet {
-    margin-top: -81px;
+    margin-top: -107px;
   }
   @include desktop {
-    margin-top: -101px;
+    margin-top: -81px;
   }
 }
 
-.button{
-&-chevron {
-  width: 50px;
-  height: 50px;
-  svg {
-    width: 40px;
-    height: 40px;
-    fill: $color-white;
+.button {
+  &-chevron {
+    width: 50px;
+    height: 50px;
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: $color-white;
+
+      &:hover {
+        fill: $color-grey-1;
+      }
+    }
+  }
+
+  &-reverse {
+    @include flex(row, center, center);
+    gap: 7px;
+    width: max-content;
+    color: $color-white;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    white-space: nowrap;
+    padding-top: 90px;
 
     &:hover {
-      fill: $color-grey-light-2;
+      color: $color-grey-1;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+      fill: $color-white;
     }
   }
 }
-
-&-reverse{
-  @include flex(row,center,center);
-  gap: 7px;
-  width: max-content;
-  color: $color-white;
-  transform: rotate(-90deg);
-  transform-origin: left bottom; /* Optional: Set the rotation origin */
-  white-space: nowrap;
- padding-top: 90px;
-
-  svg {
-    width: 40px;
-    height: 40px;
-    fill: $color-white;
-
-    &:hover {
-      fill: $color-grey-light-2;
-    }
-  }
-}
-}
-
 
 @keyframes gradientAnimation {
   0% {

@@ -25,10 +25,10 @@ export function Header() {
     }
   }, [isMenuOpen, lockScroll, unlockScroll]);
 
-  const { isScreenTabletSm } = useScreenQuery();
+  const { isScreenTabletXl } = useScreenQuery();
 
   const classNameLogo = !isMenuOpen ? "logo-row" : "logo-column";
-  const classNameNavigation = isScreenTabletSm
+  const classNameNavigation = isScreenTabletXl
     ? "navigation-row"
     : "navigation-column";
 
@@ -39,7 +39,7 @@ export function Header() {
         <p>TRAVELx</p>
       </Link>
 
-      {!isScreenTabletSm ? (
+      {!isScreenTabletXl ? (
         !isMenuOpen ? (
           <button
             type="button"
