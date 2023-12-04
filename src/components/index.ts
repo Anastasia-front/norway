@@ -2,7 +2,8 @@ export * from "./AboutUs";
 export * from "./Activities";
 export * from "./Beauties";
 export * from "./Footer";
+export * from "./GoogleMaps";
 export * from "./Header";
 export * from "./Hero";
 export * from "./Network";
-export * from "./Portal"
+export * from "./Portal";

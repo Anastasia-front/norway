@@ -67,3 +67,109 @@ main {
   background-size: 200% 100%;
   animation: gradientAnimation 3s linear infinite;
 }
+
+.modal {
+  &-backdrop {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $color-overlay;
+  }
+
+  &-background {
+    z-index: 102;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $color-white;
+  }
+}
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.root * {
+  box-sizing: border-box;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid rgb(34, 34, 34);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.input:focus {
+  border-color: blue;
+  outline: none;
+}
+
+.suggestions {
+  position: absolute;
+  top: 0;
+  transform: translateY(39px);
+  background: #fff;
+  border: 2px solid rgb(34, 34, 34);
+  width: 100%;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.listItem {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.containerMap {
+  width: 100vw;
+  height: 100vh;
+}
+
+.addressSearchContainer {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  width: fit-content;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+}
+
+.autocompleteWrapper {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  width: 100%;
+}
+
+.collapseButton {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 999;
+  width: 100px;
+  height: 50px;
+}
+
+.modeToggle {
+  background: #fff;
+  border: 1px solid black;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100px;
+}

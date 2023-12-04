@@ -36,6 +36,7 @@ _legacy*
 _backup*
 _temp*
 _lab*
+.env
 
 # temp files
 

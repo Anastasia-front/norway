@@ -3,8 +3,10 @@ import { IoIosClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-scroll";
 
-import { Portal } from ".";
 import { useKeyPress, useScreenQuery, useScrollLock } from "../hooks";
+
+import { Portal } from ".";
+
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
