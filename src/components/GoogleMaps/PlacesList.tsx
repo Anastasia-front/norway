@@ -4,14 +4,12 @@ interface Location {
   place_type: string;
 }
 
-
 interface Props {
   places: Location[];
   onPlacesRemove: (place_id: string) => void;
 }
 
 export const PlacesList = ({ places, onPlacesRemove = () => {} }: Props) => {
-  console.log(places);
   return (
     <>
       {places.map((place) => (

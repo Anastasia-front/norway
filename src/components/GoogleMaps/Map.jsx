@@ -56,7 +56,6 @@ const Map = ({ center, places, markers }) => {
         setDirectionsResponse(res);
       } else {
         count.current = 0;
-        console.log("res: ", res);
       }
     }
   };

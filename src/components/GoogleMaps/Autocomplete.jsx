@@ -34,12 +34,11 @@ export const Autocomplete = ({ isLoaded, onSelect }) => {
       // by setting the second parameter to "false"
       setValue(description, false);
       clearSuggestions();
-      console.log(description);
+
       // Get latitude and longitude via utility functions
       getGeocode({ address: description }).then((results) => {
         const { lat, lng } = getLatLng(results[0]);
-        console.log("📍 Coordinates: ", { lat, lng });
-        console.log("📍 Results: ", { results });
+
         onSelect({
           coordinates: { lat, lng },
           name: results[0].formatted_address,

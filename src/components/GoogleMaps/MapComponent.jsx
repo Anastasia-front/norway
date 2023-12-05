@@ -59,7 +59,6 @@ export function MapComponent() {
 
   const handlePlacesRemove = useCallback(
     (placeId) => {
-      console.log(placeId);
       const filteredPlaces = places.filter((place) => place.id !== placeId);
       setPlaces(filteredPlaces);
     },
