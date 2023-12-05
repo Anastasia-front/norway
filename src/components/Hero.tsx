@@ -14,7 +14,7 @@ import { MapComponent } from "./GoogleMaps/MapComponent";
 
 const socials = ["facebook", "twitter", "youtube", "instagram", "dribble"];
 
-const cities = ["Trondheim", "Geirangerfjord", "Harstad"];
+const cities = ["Trondheim", "Eresfjird", "Harstad"];
 
 export function Hero() {
   const amountOfBgs = 7;
@@ -65,16 +65,13 @@ export function Hero() {
   const currentLocation = () => {
     switch (currentCity) {
       case "Trondheim":
-        return "https://www.google.com/maps/place/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC,+%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B3%D0%B8%D1%8F/@63.433962,10.3154331,12z/data=!3m1!4b1!4m6!3m5!1s0x466d319747037e53:0xbf7c8288f3cf3d4!8m2!3d63.4305149!4d10.3950528!16zL20vMDlidGs?entry=ttu";
-
-      case "Geirangerfjord":
-        return "https://www.google.com/maps/place/%D0%93%D0%B5%D0%B9%D1%80%D0%B0%D0%BD%D0%B3%D0%B5%D1%80-%D1%84%D1%8C%D0%BE%D1%80%D0%B4/@61.6246047,6.6317331,7.66z/data=!4m6!3m5!1s0x46169d427b268c51:0xb8c99540dcc397fe!8m2!3d62.101506!4d7.0940817!16zL20vMDZ4eXFi?entry=ttu";
-
+        return { lat: 63.42962280888552, lng: 10.393314691943125 };
+      case "Eresfjird":
+        return { lat: 62.70252677981998, lng: 8.143237336424702 };
       case "Harstad":
-        return "https://maps.google.com/maps?q=Harstad&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed";
-
+        return { lat: 68.79864025933036, lng: 16.541545439041542 };
       default:
-        return "https://www.google.com/maps/place/%D0%9D%D0%BE%D1%80%D0%B2%D0%B5%D0%B3%D0%B8%D1%8F/@64.1819886,7.2178203,5z/data=!3m1!4b1!4m6!3m5!1s0x461268458f4de5bf:0xa1b03b9db864d02b!8m2!3d60.472024!4d8.468946!16zL20vMDViNHc?entry=ttu";
+        return { lat: 59.91198609954394, lng: 10.753975432760225 };
     }
   };
 
@@ -160,13 +157,13 @@ export function Hero() {
             <div className="modal-background">
               <button
                 type="button"
-                className="burger-close"
+                className="burger-close modal-close"
                 onClick={handleMapToggle}
               >
                 <IoIosClose />
               </button>
-
-              <MapComponent />
+              <h2 className="modal-title">Map</h2>
+              <MapComponent place={currentLocation()} />
             </div>
           </div>
         </Portal>

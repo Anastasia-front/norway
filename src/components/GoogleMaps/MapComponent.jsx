@@ -2,7 +2,6 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import React, { useCallback, useState } from "react";
 import { Autocomplete } from "./Autocomplete";
 import { MODES, Map } from "./Map";
-import { PlacesList } from "./PlacesList";
 
 import { SidebarWrapper } from "./SidebarWrapper";
 
@@ -10,13 +9,8 @@ import { SidebarWrapper } from "./SidebarWrapper";
 
 const API_KEY = "AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0";
 
-const defaultCenter = {
-  lat: 48.22,
-  lng: 31.1,
-};
-
-export function MapComponent() {
-  const [center, setCenter] = useState(defaultCenter);
+export function MapComponent({ place }) {
+  const [center, setCenter] = useState(place);
   const [markers, setMarkers] = useState([]);
   const [mode, setMode] = useState(MODES.MOVE);
   const [sidebarOpened, setSidebarOpened] = useState(true);
@@ -89,30 +83,37 @@ export function MapComponent() {
   );
 
   return (
-    <div>
+    <div className="map-content">
       <SidebarWrapper
-        className="addressSearchContainer}"
+        className="addressSearchContainer"
         isOpened={sidebarOpened}
       >
         <div className="autocompleteWrapper">
+          <button
+            type="button"
+            className="modeToggle"
+            style={{ visibility: "visible" }}
+            onClick={toggleSidebar}
+          >
+            {sidebarOpened ? "Collapse" : "Expand"}
+          </button>
           <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect} />
-          <button className="modeToggle" onClick={toggleMode}>
+          <button type="button" className="modeToggle" onClick={toggleMode}>
             Set markers
           </button>
-          <button className="modeToggle" onClick={clear}>
+          <button type="button" className="modeToggle" onClick={clear}>
             Clear
           </button>
         </div>
-        <PlacesList places={places} onPlacesRemove={handlePlacesRemove} />
+        {/* <PlacesList places={places} onPlacesRemove={handlePlacesRemove} /> */}
       </SidebarWrapper>
-      <button className="collapseButton" onClick={toggleSidebar}>
-        {sidebarOpened ? "Collapse" : "Expand"}
-      </button>
+
       {isLoaded ? (
         <Map
           places={places}
           center={center}
           markers={markers}
+          mode={mode}
           onMarkerAdd={onMarkerAdd}
         />
       ) : (

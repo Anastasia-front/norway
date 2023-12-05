@@ -12,7 +12,10 @@ export const SidebarWrapper = ({
   isOpened = true,
 }: Props) => {
   return (
-    <div className={className} style={{ display: isOpened ? "flex" : "none" }}>
+    <div
+      className={className}
+      style={{ visibility: isOpened ? "visible" : "hidden" }}
+    >
       {children}
     </div>
   );

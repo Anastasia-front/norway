@@ -1,11 +1,12 @@
 import {
-  DirectionsRenderer,
-  DirectionsService,
+  // DirectionsRenderer,
+  // DirectionsService,
   GoogleMap,
+  Marker,
 } from "@react-google-maps/api";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { CurrentLocationMarker, Marker } from ".";
+import { LocationMarker } from ".";
 
 import { defaultTheme } from "./theme";
 
@@ -17,15 +18,15 @@ const containerStyle = {
 const defaultOptions = {
   panControl: true,
   zoomControl: true,
-  mapTypeControl: false,
-  scaleControl: false,
-  streetViewControl: false,
+  mapTypeControl: true,
+  scaleControl: true,
+  streetViewControl: true,
   rotateControl: false,
-  clickableIcons: false,
-  keyboardShortcuts: false,
+  clickableIcons: true,
+  keyboardShortcuts: true,
   scrollwheel: true,
   disableDoubleClickZoom: false,
-  fullscreenControl: false,
+  fullscreenControl: true,
   styles: defaultTheme,
 };
 
@@ -34,9 +35,22 @@ export const MODES = {
   SET_MARKER: 1,
 };
 
-const Map = ({ center, places, markers }) => {
+const Map = ({ center, places, markers, mode, onMarkerAdd }) => {
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [directionsServiceOption, setDirectionsServiceOption] = useState({});
+  const [shouldRenderMarker, setShouldRenderMarker] = useState(false);
+
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    timerRef.current = setTimeout(() => {
+      setShouldRenderMarker(true);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerRef.current);
+    };
+  }, [center]);
 
   const mapRef = useRef(undefined);
 
@@ -47,6 +61,18 @@ const Map = ({ center, places, markers }) => {
   const onUnmount = useCallback(function callback(map) {
     mapRef.current = undefined;
   }, []);
+
+  const onClick = useCallback(
+    (loc) => {
+      if (mode === MODES.SET_MARKER) {
+        const lat = loc.latLng.lat();
+        const lng = loc.latLng.lng();
+
+        onMarkerAdd({ lat, lng });
+      }
+    },
+    [mode, onMarkerAdd]
+  );
 
   let count = useRef(0);
   const directionsCallback = (res) => {
@@ -83,34 +109,55 @@ const Map = ({ center, places, markers }) => {
     }
   }, [places]);
 
-  return (
+  return center ? (
     <div className="containerMap">
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10}
         onLoad={onLoad}
+        onClick={onClick}
         onUnmount={onUnmount}
         options={defaultOptions}
       >
-        {directionsResponse !== null && (
-          <DirectionsRenderer
-            options={{
-              directions: directionsResponse,
-            }}
-          />
-        )}
-        <CurrentLocationMarker position={center} />
+        {shouldRenderMarker && <Marker position={center} />}{" "}
         {markers.map((marker) => {
-          return <Marker key={marker} position={marker} />;
+          return <LocationMarker key={marker} position={marker} />;
         })}
-        <DirectionsService
-          options={directionsServiceOption}
-          callback={directionsCallback}
-        />
       </GoogleMap>
     </div>
-  );
+  ) : null;
 };
+
+// return (
+//   <div className="containerMap">
+//     <GoogleMap
+//       mapContainerStyle={containerStyle}
+//       center={center}
+//       zoom={10}
+//       onLoad={onLoad}
+//       onClick={onClick}
+//       onUnmount={onUnmount}
+//       options={defaultOptions}
+//     >
+//       <Marker position={center} />
+//       {markers.map((marker) => {
+//         return <LocationMarker key={marker} position={marker} />;
+//       })}
+//       {/* {directionsResponse !== null && (
+//         <DirectionsRenderer
+//           options={{
+//             directions: directionsResponse,
+//           }}
+//         />
+//       )}
+//       <DirectionsService
+//         options={directionsServiceOption}
+//         callback={directionsCallback}
+//       /> */}
+//     </GoogleMap>
+//   </div>
+// );
+// };
 
 export { Map };
