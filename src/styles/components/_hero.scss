@@ -4,21 +4,25 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding-bottom: 80px;
+
+  &-overlay {
+    background: $color-overlay-light;
+  }
 
   &-content {
     @include flex(column, center, center);
-    gap: 200px;
-    padding: 10% 10px 0;
+    gap: 100px;
+    height: 53vh;
+    padding: 10% 10px 20px;
 
     @include mobile {
-      padding: 12% 20px 0;
+      padding: 12% 20px 40px;
     }
     @include tablet {
-      padding: 15% 32px 0;
+      padding: 15% 32px 60px;
     }
     @include desktop {
-      padding: 20% 16px 0;
+      padding: 20% 16px 80px;
     }
   }
 }
@@ -56,7 +60,7 @@
   width: 100%;
 
   &-second {
-    padding-left: 40px;
+    padding-left: 60px;
   }
 }
 
@@ -107,10 +111,10 @@
   gap: 35px;
   margin-left: -120px;
 
-  &-block{
+  &-block {
     @include flex(row, flex-start, center);
     gap: 25px;
-    color: $color-white-opacity-4;
+    color: $color-grey-light-2;
     border-radius: 5px;
     background: $color-white-opacity-1;
     width: 190px;
@@ -129,6 +133,10 @@
       @include flex(column, center, flex-start);
       gap: 4px;
       filter: none;
+
+      p {
+        color: $color-grey-light-2;
+      }
 
       h6 {
         font-weight: 700;

@@ -80,73 +80,75 @@ export function Hero() {
       id="Hero"
       className={`hero bg-${activeBg} ${isVisible ? "" : "loading-container"}`}
     >
-      <div className="container hero-content">
-        <div className="blockOfElements">
-          <div className="socials-header">
-            <ul>
-              {socials.map((social) => (
-                <li key={social}>
-                  <a href="#">
-                    <svg aria-label={social}>
-                      <use href={`/sprite.svg#icon-${social}`} />
-                    </svg>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <h1 className="main-title">
-            <span>explore</span>norway
-          </h1>
-          <button
-            className="button-chevron"
-            type="button"
-            onClick={handleClickNext}
-          >
-            <VscChevronRight />
-          </button>
-        </div>
-        <div className="blockOfElements blockOfElements-second">
-          <Link to="Activities" className="button-reverse">
-            <TbArrowNarrowLeft />
-            see more
-          </Link>
-
-          <ul className="locations">
-            {cities.map((city) => (
-              <li
-                key={city}
-                className="locations-block"
-                onClick={() => {
-                  setIsMapOpen(true);
-                  setCurrentCity(city);
-                }}
-              >
-                <CiLocationOn />
-                <div>
-                  <h6> {city} </h6>
-                  <p>Plan a trip</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="pagination">
+      <div className="hero-overlay">
+        <div className="container hero-content">
+          <div className="blockOfElements">
+            <div className="socials-header">
+              <ul>
+                {socials.map((social) => (
+                  <li key={social}>
+                    <a href="#">
+                      <svg aria-label={social}>
+                        <use href={`/sprite.svg#icon-${social}`} />
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <h1 className="main-title">
+              <span>explore</span>norway
+            </h1>
             <button
               className="button-chevron"
               type="button"
-              onClick={handleClickPrev}
+              onClick={handleClickNext}
             >
-              <VscChevronLeft />
+              <VscChevronRight />
             </button>
-            <p>
-              <span className="activeBg">
-                {activeBg <= 9 && 0}
-                {activeBg}{" "}
-              </span>
-              / {amountOfBgs <= 9 && 0}
-              {amountOfBgs}
-            </p>
+          </div>
+          <div className="blockOfElements blockOfElements-second">
+            <Link to="Activities" className="button-reverse">
+              <TbArrowNarrowLeft />
+              see more
+            </Link>
+
+            <ul className="locations">
+              {cities.map((city) => (
+                <li
+                  key={city}
+                  className="locations-block"
+                  onClick={() => {
+                    setIsMapOpen(true);
+                    setCurrentCity(city);
+                  }}
+                >
+                  <CiLocationOn />
+                  <div>
+                    <h6> {city} </h6>
+                    <p>Plan a trip</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="pagination">
+              <button
+                className="button-chevron"
+                type="button"
+                onClick={handleClickPrev}
+              >
+                <VscChevronLeft />
+              </button>
+              <p>
+                <span className="activeBg">
+                  {activeBg <= 9 && 0}
+                  {activeBg}{" "}
+                </span>
+                / {amountOfBgs <= 9 && 0}
+                {amountOfBgs}
+              </p>
+            </div>
           </div>
         </div>
       </div>

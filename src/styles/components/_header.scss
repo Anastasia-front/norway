@@ -17,12 +17,11 @@
 .navigation {
   @include flex(row, space-between, center);
   gap: 24px;
-
   font-size: var(--font-size-sm);
   z-index: 7;
 
   @include desktop {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
   }
 
   a:hover {

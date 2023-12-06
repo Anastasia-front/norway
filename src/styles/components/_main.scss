@@ -62,7 +62,7 @@ main {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(to right, #5fff7494, #7bfea49f, #ffef5fb1);
+  background: linear-gradient(to right, #5fff74cd, #7bfea4b5, #ffef5fb6);
   background-color: $color-black;
   background-size: 200% 100%;
   animation: gradientAnimation 3s linear infinite;
@@ -78,7 +78,7 @@ main {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: $color-overlay;
+    background: $color-overlay-dark;
   }
 
   &-background {
