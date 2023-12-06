@@ -50,6 +50,13 @@ export function Hero() {
     setIsMapOpen(!isMapOpen);
   };
 
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      handleMapToggle();
+    }
+  };
+
   useKeyPress("Escape", handleMapToggle);
 
   const { lockScroll, unlockScroll } = useScrollLock();
@@ -155,7 +162,7 @@ export function Hero() {
 
       {isMapOpen && (
         <Portal wrapperId="map">
-          <div className="modal-backdrop">
+          <div className="modal-backdrop" onClick={handleBackdropClick}>
             <div className="modal-background">
               <button
                 type="button"

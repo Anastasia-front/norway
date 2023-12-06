@@ -18,6 +18,7 @@
   @include flex(row, space-between, center);
   gap: 24px;
   font-size: var(--font-size-sm);
+  color: $color-white;
   z-index: 7;
 
   @include desktop {
@@ -67,7 +68,7 @@
     }
     &:hover {
       svg {
-        color: $color-grey-1;
+        color: $color-black;
       }
     }
   }
@@ -79,7 +80,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: $color-grey-1;
+    background: $color-grey-2;
   }
 
   &-column {
