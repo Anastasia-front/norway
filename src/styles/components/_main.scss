@@ -47,6 +47,29 @@ main {
       fill: $color-white;
     }
   }
+
+  &-remove {
+    @include flex(row, center, center);
+    gap: 3px;
+    color: $color-orange;
+  }
+}
+
+.place {
+  &-list {
+    position: absolute;
+    z-index: 10;
+    top: 140px;
+    left: 10px;
+    padding: 7px;
+    background: $color-grey-light-1;
+    border: 1px solid $color-black;
+    border-radius: 7px;
+  }
+
+  &-item {
+    @include flex(row, space-between, center);
+  }
 }
 
 @keyframes gradientAnimation {
@@ -168,6 +191,7 @@ main {
 }
 
 .autocompleteWrapper {
+  position: relative;
   display: flex;
   flex-direction: row;
   column-gap: 10px;
@@ -180,4 +204,22 @@ main {
   border: 1px solid $color-grey-2;
   cursor: pointer;
   width: 100px;
+
+  &:hover {
+    background: $color-grey-light-1;
+    color: $color-black;
+  }
+  &:active {
+    background: $color-grey-light-2;
+  }
+
+  &-marker {
+    background: $color-grey-2;
+    color: $color-white;
+
+    &:hover {
+      background: $color-grey-2;
+      color: $color-white;
+    }
+  }
 }

@@ -10,11 +10,13 @@ import { Link } from "react-scroll";
 import { useKeyPress, useScrollLock } from "../hooks";
 
 import { Portal } from ".";
-import { MapComponent } from "./GoogleMaps/MapComponent";
+import { Coordinates, MapComponent } from "./GoogleMaps";
 
 const socials = ["facebook", "twitter", "youtube", "instagram", "dribble"];
 
 const cities = ["Trondheim", "Eresfjird", "Harstad"];
+
+export let currentLocationCoordinates: Coordinates;
 
 export function Hero() {
   const amountOfBgs = 7;
@@ -50,7 +52,6 @@ export function Hero() {
     setIsMapOpen(!isMapOpen);
   };
 
-
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       handleMapToggle();
@@ -81,6 +82,8 @@ export function Hero() {
         return { lat: 59.91198609954394, lng: 10.753975432760225 };
     }
   };
+
+  currentLocationCoordinates = currentLocation();
 
   return (
     <section
@@ -172,7 +175,7 @@ export function Hero() {
                 <IoIosClose />
               </button>
               <h2 className="modal-title">Map</h2>
-              <MapComponent place={currentLocation()} />
+              <MapComponent place={currentLocationCoordinates} />
             </div>
           </div>
         </Portal>

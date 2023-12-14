@@ -1,6 +1,9 @@
 import { Marker } from "@react-google-maps/api";
 
-export function LocationMarker({ position }) {
-  console.log(position);
+interface Props {
+  position: { lat: number; lng: number };
+}
+
+export function LocationMarker({ position }: Props) {
   return <Marker position={position} icon={{ url: "/location.svg" }} />;
 }

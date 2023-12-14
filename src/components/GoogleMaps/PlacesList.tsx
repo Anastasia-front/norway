@@ -1,30 +1,34 @@
-interface Location {
-  name: string;
-  id: string;
-  place_type: string;
-}
+import { IoTrashBin } from "react-icons/io5";
+import { Coordinates, Location } from ".";
 
 interface Props {
   places: Location[];
-  onPlacesRemove: (place_id: string) => void;
+
+  onPlacesRemove: (coordinates: Coordinates, place_id: string) => void;
 }
 
-export const PlacesList = ({ places, onPlacesRemove = () => {} }: Props) => {
+export const PlacesList = ({ places, onPlacesRemove }: Props) => {
+  console.log(places);
   return (
-    <>
-      {places.map((place) => (
-        <div>
-          {place.name}
-          <button
-            onClick={() => {
-              onPlacesRemove(place.id);
-            }}
-          >
-            Remove
-          </button>
-        </div>
-      ))}
-    </>
+    <ul className="place-list">
+      {places.length === 0 ? (
+        <p>{`Your selected place is ${places[0]}`}</p>
+      ) : (
+        places.map((place) => (
+          <li key={place.id} className="place-item">
+            {place.name}
+            <button
+              className="button-remove"
+              onClick={() => {
+                onPlacesRemove(place.coordinates, place.id);
+              }}
+            >
+              Remove <IoTrashBin />
+            </button>
+          </li>
+        ))
+      )}
+    </ul>
   );
 };
 
