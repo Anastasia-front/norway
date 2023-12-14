@@ -105,33 +105,10 @@ export function Map({
         const lng = e.latLng?.lng() || 0;
 
         try {
-          // const response = await fetch(
-          //   `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0`
-          // );
-
-          // if (!response.ok) {
-          //   throw new Error("Failed to fetch address");
-          // }
-
-          // const data = await response.json();
-
-          // if (data.status === "OK") {
-          //   // Extract city and country from the response
-          //   const res = data.results[0] || [];
-          //   const coordinates = res.geometry.location;
-          //   const place = {
-          //     name: res.formatted_address,
-          //     id: res.place_id,
-          //     place_type: res.types[0],
-          //     coordinates: res.geometry.location,
-          //   };
           const place = await fetchAddressFromCoordinates(lat, lng);
           const coordinates = { lat, lng };
           setMarkers([...markers, coordinates]);
           setPlaces([...places, place]);
-          // } else {
-          //   console.error("Geocoding failed with status:", data.status);
-          // }
         } catch (error) {
           console.error("Error during geocoding:", error);
         }
