@@ -46,3 +46,14 @@ export interface MapProps {
   markers: Location[];
   mode: ModeType;
 }
+
+export interface AutocompleteProps {
+  isLoaded: boolean;
+  onSelect: ({ coordinates, name, place_id }: onPlaceSelectProps) => void;
+}
+
+export interface Place {
+   description: string;
+ }
+
+ export type GoogleMapType = google.maps.Map;

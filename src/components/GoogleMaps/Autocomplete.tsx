@@ -5,7 +5,9 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-export const Autocomplete = ({ isLoaded, onSelect }) => {
+import { AutocompleteProps, Place } from "./";
+
+export function Autocomplete({ isLoaded, onSelect }: AutocompleteProps) {
   const {
     ready,
     value,
@@ -22,13 +24,13 @@ export const Autocomplete = ({ isLoaded, onSelect }) => {
     clearSuggestions();
   });
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Update the keyword of the input element
     setValue(e.target.value);
   };
 
   const handleSelect =
-    ({ description }) =>
+    ({ description }: Place) =>
     () => {
       // When the user selects a place, we can replace the keyword without request data from API
       // by setting the second parameter to "false"
@@ -86,4 +88,4 @@ export const Autocomplete = ({ isLoaded, onSelect }) => {
       )}
     </div>
   );
-};
+}

@@ -51,7 +51,7 @@ export function Map({
   const firstRender = useRef(true);
 
   useEffect(() => {
-    if (mapRef.current) {
+    if (mapRef?.current) {
       // Create a copy of markers and include the center marker if available
       const allMarkers = [...markers];
 
@@ -158,12 +158,24 @@ export function Map({
     };
   }, [center]);
 
+  // const onLoad = useCallback(function callback(map: google.maps.Map) {
+  //   mapRef.current = map;
+  // }, []);
+
+  // const onUnmount = useCallback(function callback() {
+  //   mapRef.current = undefined;
+  // }, []);
+
   const onLoad = useCallback(function callback(map: google.maps.Map) {
-    mapRef.current = map;
+    if (mapRef && "current" in mapRef) {
+      (mapRef as React.MutableRefObject<google.maps.Map | null>).current = map;
+    }
   }, []);
 
   const onUnmount = useCallback(function callback() {
-    mapRef.current = undefined;
+    if (mapRef && "current" in mapRef) {
+      (mapRef as React.MutableRefObject<google.maps.Map | null>).current = null;
+    }
   }, []);
 
   const onClick = useCallback(

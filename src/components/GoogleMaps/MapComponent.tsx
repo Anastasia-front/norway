@@ -1,5 +1,5 @@
 import { useJsApiLoader } from "@react-google-maps/api";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, createRef, useState } from "react";
 
 import {
   Autocomplete,
@@ -20,8 +20,7 @@ import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 const API_KEY = "AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0";
 
 export function MapComponent({ place }: MapComponentProps) {
-  // const mapRef: RefObject<google.maps.Map | null> = useRef(null);
-  const mapRef = useRef<google.maps.Map | null>(null);
+  const mapRef = createRef<google.maps.Map | null>();
   const [center, setCenter] = useState<Location>();
   const [markers, setMarkers] = useState<Location[]>([]);
   const [mode, setMode] = useState<ModeType>(MODES.MOVE);
@@ -108,7 +107,6 @@ export function MapComponent({ place }: MapComponentProps) {
   const handleFindPlace = useCallback(
     (place_id: string) => {
       const selectedPlace = places.find((place) => place.id === place_id);
-      console.log(selectedPlace);
 
       // If the place is found, set the map center to its coordinates
       if (selectedPlace) {
