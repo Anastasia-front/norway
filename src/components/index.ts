@@ -5,5 +5,6 @@ export * from "./Footer";
 export * from "./GoogleMaps";
 export * from "./Header";
 export * from "./Hero";
+export * from "./Loader";
 export * from "./Network";
 export * from "./Portal";

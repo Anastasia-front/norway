@@ -1,9 +1,8 @@
 import { useJsApiLoader } from "@react-google-maps/api";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   Autocomplete,
-  Coordinates,
   Location,
   MODES,
   Map,
@@ -13,6 +12,7 @@ import {
   onPlaceSelectProps,
 } from ".";
 
+import { Loader } from "..";
 import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 
 // const API_KEY = process.env.GOOGLE_MAPS_PLATFORM_API_KEY;
@@ -20,11 +20,20 @@ import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 const API_KEY = "AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0";
 
 export function MapComponent({ place }: MapComponentProps) {
-  const [center, _] = useState<Coordinates>(place);
-  const [markers, setMarkers] = useState<Coordinates[]>([]);
+  const mapRef = useRef<google.maps.Map | undefined>(undefined);
+  const [center, setCenter] = useState<Location>();
+  const [markers, setMarkers] = useState<Location[]>([]);
   const [mode, setMode] = useState<ModeType>(MODES.MOVE);
   const [listOpened, setListOpened] = useState(false);
-  const [browserLocation, setBrowserLocation] = useState();
+  const [browserLocation, setBrowserLocation] = useState({
+    name: "hfg",
+    id: "khg",
+    place_type: "hgc",
+    coordinates: { lat: 56, lng: 75 },
+  });
+  const [browserLocationActive, setBrowserLocationActive] = useState(false);
+  const [browserLocationLoading, setBrowserLocationLoading] = useState(false);
+  // const [activePlace, setActivePlace] = useState<Location>();
   const [places, setPlaces] = useState<Location[]>([]);
   let currentLocation: Location;
 
@@ -34,6 +43,7 @@ export function MapComponent({ place }: MapComponentProps) {
         const { lat, lng } = place;
         currentLocation = await fetchAddressFromCoordinates(lat, lng);
         setPlaces([currentLocation]);
+        setCenter(currentLocation || {});
       } catch (error) {
         console.error("Error fetching location:", error);
       }
@@ -66,7 +76,7 @@ export function MapComponent({ place }: MapComponentProps) {
       };
 
       setPlaces([...places, place]);
-      setMarkers([...markers, coordinates]);
+      setMarkers([...markers, place]);
     },
     [places, markers]
   );
@@ -74,6 +84,7 @@ export function MapComponent({ place }: MapComponentProps) {
   const clear = React.useCallback(() => {
     setMarkers([]);
     setPlaces([currentLocation]);
+    setBrowserLocationActive(false);
   }, []);
 
   const toggleListVisibility = useCallback(() => {
@@ -81,16 +92,32 @@ export function MapComponent({ place }: MapComponentProps) {
   }, [listOpened]);
 
   const handlePlacesRemove = useCallback(
-    (coordinates: Coordinates, place_id: string) => {
+    (place_id: string) => {
       const filteredPlaces = places.filter((place) => place.id !== place_id);
       setPlaces(filteredPlaces);
 
       const filteredMarkers = markers.filter(
-        (marker) => marker !== coordinates
+        (marker) => marker.id !== place_id
       );
       setMarkers(filteredMarkers);
     },
     [places, markers]
+  );
+
+  const handleFindPlace = useCallback(
+    (place_id: string) => {
+      const selectedPlace = places.find((place) => place.id === place_id);
+      console.log(selectedPlace);
+
+      // If the place is found, set the map center to its coordinates
+      if (selectedPlace) {
+        if (mapRef.current) {
+          mapRef.current.setCenter(selectedPlace.coordinates);
+          mapRef.current.setZoom(10);
+        }
+      }
+    },
+    [places]
   );
 
   const toggleMode = React.useCallback(() => {
@@ -107,17 +134,29 @@ export function MapComponent({ place }: MapComponentProps) {
         setMode(MODES.MOVE);
         break;
     }
-    console.log(mode);
   }, [mode]);
 
   const handleBrowserLocation = () => {
-    getBrowserLocation()
-      .then((currentLocation: any) => {
-        setBrowserLocation(currentLocation);
-      })
-      .catch((place) => {
-        setBrowserLocation(place);
-      });
+    if (browserLocationActive) {
+      setBrowserLocationActive(false);
+      const filteredPlaces = places.filter(
+        (place) => place.id !== browserLocation.id
+      );
+      setPlaces(filteredPlaces);
+    } else {
+      setBrowserLocationLoading(true);
+      getBrowserLocation()
+        .then((currentLocation: any) => {
+          setBrowserLocationActive(true);
+          setBrowserLocation(currentLocation);
+          setPlaces([...places, currentLocation]);
+          setBrowserLocationLoading(false);
+        })
+        .catch((place) => {
+          setBrowserLocation(place);
+          setBrowserLocationLoading(false);
+        });
+    }
   };
 
   return (
@@ -131,7 +170,12 @@ export function MapComponent({ place }: MapComponentProps) {
           List of places
         </button>
         {listOpened && (
-          <PlacesList places={places} onPlacesRemove={handlePlacesRemove} />
+          <PlacesList
+            places={places}
+            browserLocation={browserLocation}
+            onPlacesRemove={handlePlacesRemove}
+            onFindPlace={handleFindPlace}
+          />
         )}
         <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect} />
         <button
@@ -146,10 +190,12 @@ export function MapComponent({ place }: MapComponentProps) {
         </button>
         <button
           type="button"
-          className="modeToggle"
+          className={`modeToggle ${
+            browserLocation && browserLocationActive ? "modeToggle-marker" : ""
+          }`}
           onClick={handleBrowserLocation}
         >
-          Browser location
+          {browserLocationLoading ? <Loader /> : "Browser location"}
         </button>
       </div>
 
@@ -158,11 +204,12 @@ export function MapComponent({ place }: MapComponentProps) {
           places={places}
           setPlaces={setPlaces}
           setMarkers={setMarkers}
-          // setCenter={setCenter}
+          mapRef={mapRef}
           center={center}
           markers={markers}
           mode={mode}
           browserLocation={browserLocation}
+          browserLocationActive={browserLocationActive}
         />
       ) : (
         <h2>Loading</h2>

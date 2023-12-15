@@ -37,10 +37,12 @@ export interface MapComponentProps {
 
 export interface MapProps {
   setPlaces: Dispatch<SetStateAction<Location[]>>;
-  setMarkers: Dispatch<SetStateAction<Coordinates[]>>;
-  center: Coordinates;
+  setMarkers: Dispatch<SetStateAction<Location[]>>;
+  mapRef?: google.maps.Map | undefined;
+  center: Location | undefined;
   places: Location[];
-  browserLocation?: Coordinates;
-  markers: Coordinates[];
+  browserLocation?: Location | null;
+  browserLocationActive?: boolean;
+  markers: Location[];
   mode: ModeType;
 }
