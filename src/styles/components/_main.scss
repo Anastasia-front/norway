@@ -52,11 +52,35 @@ main {
     @include flex(row, center, center);
     gap: 3px;
     color: $color-orange;
+
+    &:hover {
+     opacity: 0.6;
+    }
+    &:active {
+     opacity: 0.8;
+    }
+  }
+
+  &-place {
+    color: $color-grey-2;
+    font-weight: 500;
+    font-size: var(--font-size-xs);
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+
+    &:hover {
+      color: $color-grey-1;
+    }
+    &:active {
+      color: $color-black;
+    }
   }
 }
 
 .place {
   &-list {
+    @include flex(column, center, flex-start);
+    gap: 10px;
     position: absolute;
     z-index: 10;
     top: 140px;
@@ -70,6 +94,7 @@ main {
   &-item {
     @include flex(row, space-between, center);
     gap: 20px;
+    width: 100%;
     cursor: default;
   }
 }

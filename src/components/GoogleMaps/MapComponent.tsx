@@ -20,7 +20,8 @@ import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 const API_KEY = "AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0";
 
 export function MapComponent({ place }: MapComponentProps) {
-  const mapRef = useRef<google.maps.Map | undefined>(undefined);
+  // const mapRef: RefObject<google.maps.Map | null> = useRef(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
   const [center, setCenter] = useState<Location>();
   const [markers, setMarkers] = useState<Location[]>([]);
   const [mode, setMode] = useState<ModeType>(MODES.MOVE);

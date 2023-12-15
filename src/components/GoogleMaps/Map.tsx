@@ -84,7 +84,7 @@ export function Map({
       } else {
         // After the first render, fit the bounds and set a minimum zoom level
         mapRef.current.fitBounds(bounds);
-        const minZoom = 3;
+        const minZoom = 5;
         const zoom = mapRef.current.getZoom() ?? 0;
         mapRef.current.setZoom(Math.min(zoom, minZoom));
       }

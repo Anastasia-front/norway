@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, RefObject, SetStateAction } from "react";
 
 export interface Location {
   name: string;
@@ -38,7 +38,7 @@ export interface MapComponentProps {
 export interface MapProps {
   setPlaces: Dispatch<SetStateAction<Location[]>>;
   setMarkers: Dispatch<SetStateAction<Location[]>>;
-  mapRef?: google.maps.Map | undefined;
+  mapRef: RefObject<google.maps.Map | null>;
   center: Location | undefined;
   places: Location[];
   browserLocation?: Location | null;
