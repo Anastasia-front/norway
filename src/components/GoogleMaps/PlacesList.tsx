@@ -1,21 +1,23 @@
 import { IoTrashBin } from "react-icons/io5";
-import { Location } from ".";
-
-interface Props {
-  places: Location[];
-  browserLocation: Location;
-  onPlacesRemove: (place_id: string) => void;
-  onFindPlace: (place_id: string) => void;
-}
+import { PlaceListProps } from ".";
 
 export const PlacesList = ({
   places,
   browserLocation,
   onPlacesRemove,
   onFindPlace,
-}: Props) => {
+}: PlaceListProps) => {
+  const handleClick = (event: React.MouseEvent<HTMLUListElement>) => {
+    // Check if the clicked element is not a button
+    if (!(event.target instanceof HTMLButtonElement)) {
+      // If not a button, call onFindPlace(null)
+      onFindPlace(null);
+      console.log(null);
+    }
+  };
+
   return (
-    <ul className="place-list">
+    <ul className="place-list" onClick={handleClick}>
       {places.length === 1 ? (
         <p>{`Your selected place is ${places[0].name}`}</p>
       ) : (
@@ -26,7 +28,7 @@ export const PlacesList = ({
                 <button
                   type="button"
                   className="button-place"
-                  onClick={()=>onFindPlace(place.id)}
+                  onClick={() => onFindPlace(place.id)}
                 >
                   {place.name}
                 </button>
@@ -40,7 +42,7 @@ export const PlacesList = ({
                 <button
                   type="button"
                   className="button-place"
-                  onClick={()=>onFindPlace(place.id)}
+                  onClick={() => onFindPlace(place.id)}
                 >
                   {place.name}
                 </button>
@@ -53,7 +55,7 @@ export const PlacesList = ({
                 <button
                   type="button"
                   className="button-place"
-                  onClick={()=>onFindPlace(place.id)}
+                  onClick={() => onFindPlace(place.id)}
                 >
                   {place.name}
                 </button>

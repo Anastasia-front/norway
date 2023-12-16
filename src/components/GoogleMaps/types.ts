@@ -1,4 +1,4 @@
-import { Dispatch, RefObject, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export interface Location {
   name: string;
@@ -38,9 +38,9 @@ export interface MapComponentProps {
 export interface MapProps {
   setPlaces: Dispatch<SetStateAction<Location[]>>;
   setMarkers: Dispatch<SetStateAction<Location[]>>;
-  mapRef: RefObject<google.maps.Map | null>;
   center: Location | undefined;
   places: Location[];
+  selectedPlace: Location | null;
   browserLocation?: Location | null;
   browserLocationActive?: boolean;
   markers: Location[];
@@ -53,7 +53,12 @@ export interface AutocompleteProps {
 }
 
 export interface Place {
-   description: string;
- }
+  description: string;
+}
 
- export type GoogleMapType = google.maps.Map;
+export interface PlaceListProps {
+   places: Location[];
+   browserLocation: Location;
+   onPlacesRemove: (place_id: string) => void;
+   onFindPlace: (place_id: string|null) => void;
+ }

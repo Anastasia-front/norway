@@ -1,5 +1,5 @@
 import { useJsApiLoader } from "@react-google-maps/api";
-import React, { useCallback, useEffect, createRef, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import {
   Autocomplete,
@@ -20,7 +20,6 @@ import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 const API_KEY = "AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0";
 
 export function MapComponent({ place }: MapComponentProps) {
-  const mapRef = createRef<google.maps.Map | null>();
   const [center, setCenter] = useState<Location>();
   const [markers, setMarkers] = useState<Location[]>([]);
   const [mode, setMode] = useState<ModeType>(MODES.MOVE);
@@ -33,8 +32,8 @@ export function MapComponent({ place }: MapComponentProps) {
   });
   const [browserLocationActive, setBrowserLocationActive] = useState(false);
   const [browserLocationLoading, setBrowserLocationLoading] = useState(false);
-  // const [activePlace, setActivePlace] = useState<Location>();
   const [places, setPlaces] = useState<Location[]>([]);
+  const [selectedPlace, setSelectedPlace] = useState<Location | null>(null);
   let currentLocation: Location;
 
   useEffect(() => {
@@ -105,15 +104,14 @@ export function MapComponent({ place }: MapComponentProps) {
   );
 
   const handleFindPlace = useCallback(
-    (place_id: string) => {
+    (place_id: string | null) => {
       const selectedPlace = places.find((place) => place.id === place_id);
 
       // If the place is found, set the map center to its coordinates
       if (selectedPlace) {
-        if (mapRef.current) {
-          mapRef.current.setCenter(selectedPlace.coordinates);
-          mapRef.current.setZoom(10);
-        }
+        setSelectedPlace(selectedPlace);
+      } else {
+        setSelectedPlace(null);
       }
     },
     [places]
@@ -201,9 +199,9 @@ export function MapComponent({ place }: MapComponentProps) {
       {isLoaded ? (
         <Map
           places={places}
+          selectedPlace={selectedPlace}
           setPlaces={setPlaces}
           setMarkers={setMarkers}
-          mapRef={mapRef}
           center={center}
           markers={markers}
           mode={mode}

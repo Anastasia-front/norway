@@ -54,10 +54,10 @@ main {
     color: $color-orange;
 
     &:hover {
-     opacity: 0.6;
+      opacity: 0.6;
     }
     &:active {
-     opacity: 0.8;
+      opacity: 0.8;
     }
   }
 
@@ -89,13 +89,14 @@ main {
     background: $color-grey-light-1;
     border: 1px solid $color-black;
     border-radius: 7px;
+    cursor: alias;
   }
 
   &-item {
     @include flex(row, space-between, center);
     gap: 20px;
     width: 100%;
-    cursor: default;
+    cursor: alias;
   }
 }
 
