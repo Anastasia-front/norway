@@ -11,18 +11,22 @@
 
   &-content {
     @include flex(column, center, center);
-    gap: 100px;
+    gap: 40px;
     height: 53vh;
-    padding: 10% 10px 20px;
+    max-width: 90vw;
+    padding: 70% 10px 20px;
 
     @include mobile {
-      padding: 12% 20px 40px;
+      gap: 50px;
+      padding: 50% 20px 40px;
     }
     @include tablet {
-      padding: 15% 32px 60px;
+      gap: 60px;
+      padding: 30vw 32px 60px;
     }
     @include desktop {
-      padding: 20% 16px 80px;
+      gap: 100px;
+      padding: 200px 16px 80px;
     }
   }
 }
@@ -58,6 +62,11 @@
 .blockOfElements {
   @include flex(row, space-between, center);
   width: 100%;
+  gap: 10px;
+
+  @include mobile {
+    gap: 30px;
+  }
 
   &-second {
     padding-left: 60px;
@@ -65,8 +74,9 @@
 }
 
 .socials-header {
-  @include flex(column, center, center);
-  gap: 20px;
+  @include tablet {
+    height: 142px;
+  }
 
   li {
     width: 40px;
@@ -108,8 +118,14 @@
 
 .locations {
   @include flex(row, center, center);
-  gap: 35px;
+  flex-wrap: wrap;
+  gap: 22px;
   margin-left: -120px;
+
+  @include desktop {
+    flex-wrap: nowrap;
+    gap: 35px;
+  }
 
   &-block {
     @include flex(row, flex-start, center);
@@ -117,8 +133,11 @@
     color: $color-grey-light-2;
     border-radius: 5px;
     background: $color-white-opacity-1;
-    width: 190px;
     padding: 20px 50px 20px 20px;
+
+    @include desktop {
+      width: 190px;
+    }
 
     &:hover {
       cursor: pointer;
