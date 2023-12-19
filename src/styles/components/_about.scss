@@ -1,7 +1,11 @@
 .about {
   &-content {
-    @include flex(row, space-between, center);
+    @include flex(column, center, center);
     gap: 2rem;
+
+    @include desktop {
+      @include flex(row, space-between, center);
+    }
   }
 
   &-list {
@@ -12,6 +16,14 @@
   &-item {
     @include flex(row, flex-start, flex-start);
     gap: 1rem;
+
+    &__reverse {
+      @include flex(row-reverse, flex-end, flex-start);
+
+      &-text {
+        text-align: right;
+      }
+    }
   }
 
   &-number {
@@ -44,7 +56,11 @@
 
   &-img {
     border-radius: 10px;
-    width: 50%;
+    width: 100%;
     height: auto;
+
+    @include desktop {
+      width: 50%;
+    }
   }
 }

@@ -3,6 +3,7 @@ import img from "../assets/jpg/content/about-us.jpg";
 import { getAltNameFromPath } from "../helpers";
 
 import { Subtitle, Title } from ".";
+import { useScreenQuery } from "../hooks";
 
 const text = [
   {
@@ -13,7 +14,7 @@ const text = [
   {
     name: "Fair & Share",
     description:
-      "Join us in creating a positive impact on the places you visit and fostering fair and sustainable tourism practices. Join us in creating a positive impact on the places you visit and fostering fair and sustainable tourism practices.",
+      "Our travel-oriented platform is dedicated to creating meaningful connections between travelers and local communities in Norway.",
   },
   {
     name: "Experience",
@@ -23,6 +24,8 @@ const text = [
 ];
 
 export function AboutUs() {
+  const { isScreenTabletSm } = useScreenQuery();
+
   return (
     <section id="About us" className="section container">
       <Subtitle name="About Us" /> <Title name="Our Philosophy" />
@@ -30,12 +33,23 @@ export function AboutUs() {
         <img src={img} alt={getAltNameFromPath(img)} className="about-img" />
         <ol className="about-list">
           {text.map((block, index) => (
-            <li className="about-item">
+            <li
+              key={block.name}
+              className={`about-item ${
+                isScreenTabletSm && index % 2 !== 0 ? "about-item__reverse" : ""
+              }`}
+            >
               <span className="about-number">
                 {index <= 9 && 0}
                 {index + 1}
               </span>
-              <div>
+              <div
+                className={` ${
+                  isScreenTabletSm && index % 2 !== 0
+                    ? "about-item__reverse-text"
+                    : ""
+                }`}
+              >
                 <h4 className="about-title"> {block.name} </h4>
                 <p className="about-description"> {block.description} </p>
               </div>
