@@ -8,3 +8,5 @@ export * from "./Hero";
 export * from "./Loader";
 export * from "./Network";
 export * from "./Portal";
+export * from "./Subtitle";
+export * from "./Title";

@@ -1,4 +1,6 @@
 main {
+  @include flex(column, center, center);
+  gap: 3rem;
   margin-top: -51px;
 
   @include mobile {
@@ -10,6 +12,32 @@ main {
   @include desktop {
     margin-top: -81px;
   }
+}
+
+.section {
+  margin: 0 auto;
+}
+
+.title {
+  @include flex(row, center, center);
+  font-size: var(--font-size-xl);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  padding-bottom: 50px;
+}
+
+.subtitle {
+  @include flex(row, center, center);
+  color: $color-grey-2;
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 11.2px;
+  text-transform: uppercase;
+  padding: 50px 0 25px 0;
 }
 
 .button {

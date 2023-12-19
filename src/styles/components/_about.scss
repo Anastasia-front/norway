@@ -1,0 +1,50 @@
+.about {
+  &-content {
+    @include flex(row, space-between, center);
+    gap: 2rem;
+  }
+
+  &-list {
+    @include flex(column, flex-start, flex-start);
+    gap: 2rem;
+  }
+
+  &-item {
+    @include flex(row, flex-start, flex-start);
+    gap: 1rem;
+  }
+
+  &-number {
+    padding-top: 10px;
+    color: $color-grey-1;
+    font-size: var(--font-size-sm);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+  }
+
+  &-title {
+    color: $color-grey-dark-2;
+    font-size: var(--font-size-md);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+
+  &-description {
+    color: $color-grey-dark-1;
+    font-size: var(--font-size-xs);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+  }
+
+  &-img {
+    border-radius: 10px;
+    width: 50%;
+    height: auto;
+  }
+}
