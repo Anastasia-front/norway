@@ -2,6 +2,7 @@ main {
   @include flex(column, center, center);
   gap: 3rem;
   margin-top: -51px;
+  padding: 0 0 40px 0;
 
   @include mobile {
     margin-top: -61px;
@@ -16,6 +17,90 @@ main {
 
 .section {
   margin: 0 auto;
+}
+
+.logo {
+  img {
+    width: 45px;
+    height: 45px;
+  }
+  p {
+    color: $color-white;
+    font-family: Roboto;
+    font-size: var(--font-size-sm);
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 3.6px;
+  }
+
+  &:hover {
+    p {
+      color: $color-grey-light-2;
+    }
+    img {
+      opacity: 0.7;
+    }
+  }
+
+  &-column {
+    @include flex(column, center, center);
+    gap: 10px;
+  }
+
+  &-row {
+    @include flex(row, center, center);
+    gap: 12px;
+    z-index: 10;
+  }
+
+  &-footer {
+    p {
+      color: $color-black;
+    }
+
+    img {
+      @include flex(row, center, center);
+      background: $color-black;
+      border-radius: 50%;
+      padding: 7px;
+    }
+  }
+}
+
+.navigation {
+  @include flex(row, space-between, center);
+  gap: 24px;
+  font-size: var(--font-size-sm);
+  color: $color-white;
+  z-index: 7;
+
+  @include desktop {
+    font-size: var(--font-size-xs);
+  }
+
+  a:hover {
+    color: $color-grey-1;
+  }
+
+  .active:hover {
+    color: none;
+  }
+
+  &-column {
+    @include flex(column, center, center);
+    gap: 24px;
+  }
+
+  &-row {
+    @include flex(row, center, center);
+    gap: 65px;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+    color: $color-grey-dark-1;
+  }
 }
 
 .title {

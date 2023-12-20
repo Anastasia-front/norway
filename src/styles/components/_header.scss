@@ -11,37 +11,7 @@
     padding: 30px 32px 0;
   }
   @include desktop {
-    padding: 40px 16px 0;
-  }
-}
-
-.navigation {
-  @include flex(row, space-between, center);
-  gap: 24px;
-  font-size: var(--font-size-sm);
-  color: $color-white;
-  z-index: 7;
-
-  @include desktop {
-    font-size: var(--font-size-xs);
-  }
-
-  a:hover {
-    color: $color-grey-1;
-  }
-
-  .active:hover {
-    color: none;
-  }
-
-  &-column {
-    @include flex(column, center, center);
-    gap: 24px;
-  }
-
-  &-row {
-    @include flex(row, center, center);
-    gap: 65px;
+    padding: 36px 16px 0;
   }
 }
 
@@ -95,37 +65,4 @@
   }
 }
 
-.logo {
-  img {
-    width: 45px;
-    height: auto;
-  }
-  p {
-    color: $color-white;
-    font-family: Roboto;
-    font-size: var(--font-size-sm);
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    letter-spacing: 3.6px;
-  }
 
-  &:hover {
-    p {
-      color: $color-grey-1;
-    }
-    img {
-      opacity: 0.7;
-    }
-  }
-
-  &-column {
-    @include flex(column, center, center);
-    gap: 10px;
-  }
-
-  &-row {
-    @include flex(row, center, center);
-    gap: 12px;
-  }
-}

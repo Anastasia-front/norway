@@ -1,0 +1,74 @@
+.footer {
+  @include flex(column, center, center);
+  gap: 30px;
+  background: $color-grey-light-1;
+  padding: 70px 0;
+
+  &-bottom {
+    position: relative;
+    padding-top: 40px;
+    @include flex(row, space-between, center);
+    gap: 50px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 1px;
+      width: 80%;
+      background: $color-grey-dark-1;
+    }
+
+    p {
+      @include flex(column, center, center);
+      gap: 5px;
+      color: $color-grey-1;
+      font-family: Manrope;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+
+      span {
+        color: $color-grey-dark-1;
+      }
+    }
+
+    ul {
+      @include flex(row, center, center);
+      gap: 30px;
+
+      li {
+        @include flex(row, center, center);
+        gap: 10px;
+      }
+
+      a {
+        @include flex(row, center, center);
+        padding: 3px;
+        width: 24px;
+        height: 24px;
+        background: $color-grey-light-2;
+        border-radius: 50%;
+        color: $color-grey-dark-1;
+
+        &:hover{
+         background: $color-grey-1;
+
+         svg{
+             fill: $color-grey-light-2;
+         }
+        
+        }
+      }
+
+      svg {
+        fill: $color-grey-dark-1;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
