@@ -20,10 +20,8 @@
 .comment {
   &-bg {
     border-radius: 10px;
-    margin-left: -50px;
-    width: 110%;
+    width: 100%;
     max-width: 95vw;
-    margin: 0 auto;
     background-image: url(/networkBg/comments.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -38,8 +36,9 @@
   &-list {
     @include flex(row, space-between, center);
     gap: 35px;
-    padding: 50px;
-    width: 90%;
+    padding: 40px 0;
+    margin: 0 auto;
+    width: 95%;
     overflow-x: scroll;
 
     @include desktop {
@@ -47,7 +46,9 @@
     }
 
     &::-webkit-scrollbar {
-      width: 3px;
+      width: 110%;
+      height: 7px;
+      margin: 0;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -81,23 +82,25 @@
     width: 320px;
     height: 185px;
 
+    path {
+      color: $color-orange;
+      opacity: 0.4;
+    }
+
     &__triangle {
       position: absolute;
       bottom: -12px;
       left: 30px;
       width: 24px;
       height: 15px;
-    }
-
-    svg {
-      color: $color-orange;
+      opacity: 1;
     }
   }
 
   &-person {
     @include flex(row, space-between, center);
     gap: 15px;
-    padding-left: 12px;
+    padding-left: 15px;
 
     p {
       color: $color-white;
