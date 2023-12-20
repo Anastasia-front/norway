@@ -18,5 +18,8 @@
 <symbol id="icon-logo" viewBox="0 0 35 32">
 <path d="M0 0h35.122v32h-35.122v-32z"></path>
 </symbol>
+<symbol id="icon-triangle" viewBox="0 0 55 32">
+<path fill="#fff" style="fill: var(--color1, #fff)" d="M54.857 0.914h-54.857l22.006 28.425c2.745 3.546 8.099 3.546 10.844 0l22.006-28.425z"></path>
+</symbol>
 </defs>
 </svg>

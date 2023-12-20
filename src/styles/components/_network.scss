@@ -1,0 +1,122 @@
+.partners {
+  &-list {
+    @include flex(row, center, center);
+    flex-wrap: wrap;
+    column-gap: 110px;
+    row-gap: 30px;
+    padding-bottom: 30px;
+  }
+
+  &-item {
+    width: 200px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.comment {
+  &-bg {
+    border-radius: 10px;
+    margin-left: -50px;
+    width: 110%;
+    max-width: 95vw;
+    margin: 0 auto;
+    background-image: url(/networkBg/comments.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+    @include desktop {
+      background-size: contain;
+    }
+  }
+
+  &-list {
+    @include flex(row, space-between, center);
+    gap: 35px;
+    padding: 50px;
+    width: 90%;
+    overflow-x: scroll;
+
+    @include desktop {
+      gap: 50px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-grey-light-2;
+      border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $color-grey-light-1;
+    }
+  }
+
+  &-item {
+    @include flex(column, center, flex-start);
+    gap: 30px;
+  }
+
+  &-text {
+    position: relative;
+    @include flex(column, center, flex-start);
+    gap: 7px;
+    color: $color-grey-2;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 20px;
+    border-radius: 10px;
+    background: $color-white;
+    padding: 40px 15px 54px 38px;
+    width: 320px;
+    height: 185px;
+
+    &__triangle {
+      position: absolute;
+      bottom: -12px;
+      left: 30px;
+      width: 24px;
+      height: 15px;
+    }
+
+    svg {
+      color: $color-orange;
+    }
+  }
+
+  &-person {
+    @include flex(row, space-between, center);
+    gap: 15px;
+    padding-left: 12px;
+
+    p {
+      color: $color-white;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 28px;
+    }
+    span {
+      color: $color-white;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      opacity: 0.7;
+    }
+    img {
+      width: 56px;
+      height: 56px;
+    }
+  }
+}

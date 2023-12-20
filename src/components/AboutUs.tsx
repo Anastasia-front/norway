@@ -24,7 +24,7 @@ const text = [
 ];
 
 export function AboutUs() {
-  const { isScreenTabletSm } = useScreenQuery();
+  const { isScreenTabletLg } = useScreenQuery();
 
   return (
     <section id="About us" className="section container">
@@ -36,7 +36,9 @@ export function AboutUs() {
             <li
               key={block.name}
               className={`about-item ${
-                isScreenTabletSm && index % 2 !== 0 ? "about-item__reverse" : ""
+                !isScreenTabletLg && index % 2 !== 0
+                  ? "about-item__reverse"
+                  : ""
               }`}
             >
               <span className="about-number">
@@ -45,7 +47,7 @@ export function AboutUs() {
               </span>
               <div
                 className={` ${
-                  isScreenTabletSm && index % 2 !== 0
+                  !isScreenTabletLg && index % 2 !== 0
                     ? "about-item__reverse-text"
                     : ""
                 }`}
