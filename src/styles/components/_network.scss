@@ -36,13 +36,26 @@
   &-list {
     @include flex(row, space-between, center);
     gap: 35px;
-    padding: 40px 0;
-    margin: 0 auto;
-    width: 95%;
+    padding: 40px 12px 30px;
+    margin: 0 auto 10px;
     overflow-x: scroll;
+    width: 280px;
 
+    @include mobile {
+      width: 380px;
+      gap: 40px;
+      padding: 50px 40px 30px;
+    }
+    @include tablet {
+      width: 640px;
+    }
     @include desktop {
+      width: 100%;
       gap: 50px;
+      padding: 50px 12px 30px;
+      overflow-x: hidden;
+      justify-content: center;
+      margin-left: -10px;
     }
 
     &::-webkit-scrollbar {
@@ -58,6 +71,7 @@
 
     &::-webkit-scrollbar-track {
       background-color: $color-grey-light-1;
+      border-radius: 6px;
     }
   }
 
@@ -79,8 +93,21 @@
     border-radius: 10px;
     background: $color-white;
     padding: 40px 15px 54px 38px;
-    width: 320px;
+    width: 230px;
     height: 185px;
+
+    @include mobile {
+      width: 330px;
+    }
+    @include tablet {
+      width: 260px;
+      height: 230px;
+    }
+    @include desktop {
+      width: 280px;
+      height: 150px;
+      display: inline;
+    }
 
     path {
       color: $color-orange;

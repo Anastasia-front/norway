@@ -52,8 +52,7 @@ export function Network() {
           {comments.map((comment) => (
             <li key={comment.name} className="comment-item">
               <p className="comment-text">
-                <BiSolidQuoteLeft />
-                {comment.text}
+                <BiSolidQuoteLeft /> {comment.text}
                 <svg className="comment-text__triangle" aria-label="triangle">
                   <use href="/sprite.svg#icon-triangle" />
                 </svg>
