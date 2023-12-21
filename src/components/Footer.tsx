@@ -18,6 +18,13 @@ export function Footer() {
         <Link to="About us">About us</Link>
         <Link to="Beauties">Beauties</Link>
         <Link to="Network">Network</Link>
+        <a
+          href="https://www.iubenda.com/en/privacy-and-cookie-policy-generator?utm_source=google&utm_medium=ppc_page&utm_campaign=row_pcp_new_search&utm_term=privacy%20policy%20template&utm_content=628824560331&gclid=Cj0KCQiA4Y-sBhC6ARIsAGXF1g6BxcoHVOWfZTO6SNJ-2nNZZhUndfzEN19bV84mkjaA6OuL8AVdJVsaAjI7EALw_wcB"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Privacy Policy
+        </a>
       </nav>
       <div className="footer-bottom container">
         <p>

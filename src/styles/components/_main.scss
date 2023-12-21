@@ -38,6 +38,7 @@ main {
     p {
       color: $color-grey-light-2;
     }
+
     img {
       opacity: 0.7;
     }
@@ -58,7 +59,11 @@ main {
     p {
       color: $color-black;
     }
-
+    &:hover {
+      p {
+        color: $color-grey-dark-1;
+      }
+    }
     img {
       @include flex(row, center, center);
       background: $color-black;
