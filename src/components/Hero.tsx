@@ -12,7 +12,16 @@ import { useKeyPress, useScrollLock } from "../hooks";
 import { Portal } from ".";
 import { Coordinates, MapComponent } from "./GoogleMaps";
 
-const socials = ["facebook", "twitter", "youtube", "instagram", "dribble"];
+const socials = [
+  { name: "facebook", href: "https://www.facebook.com/visitnorway/" },
+  {
+    name: "twitter",
+    href: "https://twitter.com/NorwayMFA?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+  },
+  { name: "youtube", href: "https://www.youtube.com/visitnorway" },
+  { name: "instagram", href: "https://www.instagram.com/norway/" },
+  { name: "dribble", href: "https://dribbble.com/tags/norway" },
+];
 
 const cities = ["Trondheim", "Eresfjird", "Harstad"];
 
@@ -96,10 +105,10 @@ export function Hero() {
             <div className="socials-header">
               <ul>
                 {socials.map((social) => (
-                  <li key={social}>
-                    <a href="#">
-                      <svg aria-label={social}>
-                        <use href={`/sprite.svg#icon-${social}`} />
+                  <li key={social.name}>
+                    <a href={social.href} target="_blank">
+                      <svg aria-label={social.name}>
+                        <use href={`/sprite.svg#icon-${social.name}`} />
                       </svg>
                     </a>
                   </li>
