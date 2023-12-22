@@ -49,15 +49,15 @@
   gap: 30px;
   padding-top: 70px;
 
-  &-bg{
-   background: $color-grey-light-1;
-   width: 100vw;
-   margin-top: -200px;
-   padding: 200px 0 80px 0;
+  &-bg {
+    background: $color-grey-light-1;
+    width: 100vw;
+    margin-top: -200px;
+    padding: 200px 0 80px 0;
   }
 
   &-button {
-   padding: 30px 60px;
+    padding: 30px 60px;
     border-radius: 5px;
     background: $color-grey-dark-2;
     color: $color-white;
@@ -66,6 +66,13 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 5px;
+
+    &:hover {
+      background: $color-grey-dark-1;
+    }
+    &:active {
+      background: $color-grey-1;
+    }
   }
 }
 
@@ -88,6 +95,11 @@
     line-height: normal;
     letter-spacing: 1px;
     width: 89%;
+    outline: $color-grey-1;
+
+    &:focus {
+      border: 1px solid $color-grey-1;
+    }
   }
 
   &-icon {
@@ -95,6 +107,14 @@
     top: 45px;
     right: 10px;
     color: $color-grey-1;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-grey-dark-1;
+    }
+    &:active {
+      color: $color-grey-dark-2;
+    }
   }
 }
 
