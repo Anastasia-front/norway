@@ -1,0 +1,167 @@
+.hotel {
+  &-list {
+    @include flex(row, center, flex-start);
+    gap: 40px;
+  }
+
+  &-container {
+    @include flex(column, center, flex-start);
+    gap: 20px;
+  }
+
+  &-img {
+    border-radius: 8px;
+    width: auto;
+    height: 240px;
+  }
+
+  &-info {
+    @include flex(row, center, flex-start);
+    gap: 20px;
+
+    p {
+      @include flex(column, center, flex-start);
+      gap: 7px;
+      color: $color-black;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    span {
+      color: $color-grey-dark-1;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+
+.stars {
+  @include flex(row, center, flex-start);
+  gap: 7px;
+  padding-top: 10px;
+}
+
+.search {
+  @include flex(row, space-between, center);
+  gap: 30px;
+  padding-top: 70px;
+
+  &-bg{
+   background: $color-grey-light-1;
+   width: 100vw;
+   margin-top: -200px;
+   padding: 200px 0 80px 0;
+  }
+
+  &-button {
+   padding: 30px 60px;
+    border-radius: 5px;
+    background: $color-grey-dark-2;
+    color: $color-white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 5px;
+  }
+}
+
+.input {
+  &-dropdown {
+    @include flex(column, center, flex-start);
+    gap: 12px;
+    position: relative;
+    width: 270px;
+  }
+
+  &-input {
+    padding: 18px;
+    border-radius: 5px;
+    border: 1px solid $color-grey-light-2;
+    color: $color-grey-2;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+    width: 89%;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    color: $color-grey-1;
+  }
+}
+
+.calendar {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  z-index: 1;
+  display: block;
+  background-color: $color-grey-light-1;
+  box-shadow: 0 0 5px $color-white-opacity-1;
+  border-radius: 8px;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid $color-grey-2;
+  }
+
+  th {
+    background-color: $color-grey-light-2;
+  }
+  td:hover {
+    background-color: $color-grey-1;
+    cursor: pointer;
+  }
+
+  &-header {
+    @include flex(row, space-between, center);
+    padding: 10px;
+
+    button {
+      &:hover {
+        color: $color-grey-1;
+      }
+      &:active {
+        color: $color-grey-2;
+      }
+    }
+
+    span {
+      width: 50px;
+    }
+
+    &__month {
+      @include flex(row, space-between, center);
+      span {
+        display: block;
+        width: 100px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.label {
+  color: $color-grey-1;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 3px;
+  text-transform: capitalize;
+}
