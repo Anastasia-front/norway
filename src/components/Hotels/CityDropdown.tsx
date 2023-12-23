@@ -1,17 +1,22 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Loader } from ".";
+import { Loader } from "..";
 
 interface City {
   city: string;
 }
 
 interface Props {
+  selectedState: string;
   selectedLocation: string;
   onSelectCity: (city: string) => void;
 }
 
-export function LocationDropdown({ selectedLocation, onSelectCity }: Props) {
+export function CityDropdown({
+  selectedLocation,
+  selectedState,
+  onSelectCity,
+}: Props) {
   const [cities, setCities] = useState<City[]>([]);
   const [selectedCity, setSelectedCity] = useState(selectedLocation);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,17 +28,18 @@ export function LocationDropdown({ selectedLocation, onSelectCity }: Props) {
       setIsLoading(true);
       try {
         const response = await axios.post(
-          "https://countriesnow.space/api/v0.1/countries/cities",
+          "https://countriesnow.space/api/v0.1/countries/state/cities",
           {
             country: "norway",
+            state: selectedState,
           }
         );
 
-        const cityOptions: City[] = response.data.data.map((city: string) => ({
+        const cities: City[] = response.data.data.map((city: string) => ({
           city,
         }));
 
-        setCities(cityOptions);
+        setCities(cities);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching cities", error);
@@ -56,6 +62,8 @@ export function LocationDropdown({ selectedLocation, onSelectCity }: Props) {
       </span>
       {isLoading ? (
         <Loader />
+      ) : cities.length === 0 ? (
+        <p>There is no one city in this state</p>
       ) : (
         <ul ref={dropdownRef}>
           {cities.map((city, index) => (

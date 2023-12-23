@@ -3,7 +3,7 @@ import { useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 
-import { LocationDropdown, Rating, Subtitle, Title } from ".";
+import { CityDropdown,StateDropdown, Rating, Subtitle, Title } from ".";
 
 import { formateDate } from "../helpers";
 
@@ -23,11 +23,10 @@ const hotels = [
 
 export function Beauties() {
   const [isCalendarVisible, setCalendarVisible] = useState(false);
-  const [isLocationDropdownVisible, setLocationDropdownVisible] =
-    useState(false);
+  const [isCityDropdownVisible, setCityDropdownVisible] = useState(false);
   const [isPlaceDropdownVisible, setPlaceDropdownVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedLocation, setSelectedLocation] = useState("Bergen");
+  const [selectedCity, setSelectedLocation] = useState("Bergen");
   const [selectedPlace, setSelectedPlace] = useState("Loften");
 
   const handleDateChange = (date: Date) => {
@@ -49,20 +48,19 @@ export function Beauties() {
 
   const handleLocationChange = (location: string) => {
     setSelectedLocation(location);
-    setLocationDropdownVisible(false);
+    setCityDropdownVisible(false);
   };
 
-  const openLocationDropdown = () => {
-    setLocationDropdownVisible(true);
+  const openCityDropdown = () => {
+    setCityDropdownVisible(true);
   };
 
-  const closeLocationDropdown = () => {
-    setLocationDropdownVisible(false);
+  const closeCityDropdown = () => {
+    setCityDropdownVisible(false);
   };
 
-
-  const refLocation = useOnclickOutside(() => {
-    closeLocationDropdown();
+  const refCity = useOnclickOutside(() => {
+    closeCityDropdown();
   });
 
   const handlePlaceChange = (place: string) => {
@@ -78,7 +76,7 @@ export function Beauties() {
     setPlaceDropdownVisible(false);
   };
 
-  const refPlace = useOnclickOutside(() => {
+  const refState = useOnclickOutside(() => {
     closePlaceDropdown();
   });
   return (
@@ -127,32 +125,9 @@ export function Beauties() {
               />
             )}
           </div>
-          <div className="input-dropdown" ref={refLocation}>
-            <label htmlFor="location" className="label">
-              Location
-            </label>
-            <input
-              type="text"
-              className="input-input"
-              id="location"
-              placeholder="Select location"
-              onFocus={openLocationDropdown}
-              value={selectedLocation}
-              readOnly
-            />
-            <div className="input-icon" onClick={openLocationDropdown}>
-              {isLocationDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
-            </div>
-            {isLocationDropdownVisible && (
-              <LocationDropdown
-                selectedLocation={selectedLocation}
-                onSelectCity={handleLocationChange}
-              />
-            )}
-          </div>
-          <div className="input-dropdown" ref={refPlace}>
+          <div className="input-dropdown" ref={refState}>
             <label htmlFor="place" className="label">
-              PLACE
+              State
             </label>
             <input
               type="text"
@@ -167,9 +142,33 @@ export function Beauties() {
               {isPlaceDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             {isPlaceDropdownVisible && (
-              <LocationDropdown
-                selectedLocation={selectedPlace}
-                onSelectCity={handlePlaceChange}
+              <StateDropdown
+                selectedState={selectedPlace}
+                onSelectState={handlePlaceChange}
+              />
+            )}
+          </div>
+          <div className="input-dropdown" ref={refCity}>
+            <label htmlFor="location" className="label">
+              City
+            </label>
+            <input
+              type="text"
+              className="input-input"
+              id="location"
+              placeholder="Select location"
+              onFocus={openCityDropdown}
+              value={selectedCity}
+              readOnly
+            />
+            <div className="input-icon" onClick={openCityDropdown}>
+              {isCityDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
+            </div>
+            {isCityDropdownVisible && (
+              <CityDropdown
+              selectedState={selectedPlace}
+                selectedLocation={selectedCity}
+                onSelectCity={handleLocationChange}
               />
             )}
           </div>
