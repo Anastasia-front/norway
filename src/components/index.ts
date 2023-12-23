@@ -2,6 +2,7 @@ export * from "./AboutUs";
 export * from "./Activities";
 export * from "./Beauties";
 export * from "./Calendar";
+export * from "./LocationDropdown";
 export * from "./Footer";
 export * from "./GoogleMaps";
 export * from "./Header";

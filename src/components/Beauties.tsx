@@ -3,7 +3,7 @@ import { useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 
-import { Rating, Subtitle, Title } from ".";
+import { LocationDropdown, Rating, Subtitle, Title } from ".";
 
 import { formateDate } from "../helpers";
 
@@ -23,22 +23,64 @@ const hotels = [
 
 export function Beauties() {
   const [isCalendarVisible, setCalendarVisible] = useState(false);
-  
+  const [isLocationDropdownVisible, setLocationDropdownVisible] =
+    useState(false);
+  const [isPlaceDropdownVisible, setPlaceDropdownVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedLocation, setSelectedLocation] = useState("Bergen");
+  const [selectedPlace, setSelectedPlace] = useState("Loften");
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
     setCalendarVisible(false);
   };
 
-  const toggleCalendar = () => {
-    setCalendarVisible(!isCalendarVisible);
+  const openCalendar = () => {
+    setCalendarVisible(true);
   };
 
-  const ref = useOnclickOutside(() => {
-    toggleCalendar();
+  const closeCalendar = () => {
+    setCalendarVisible(false);
+  };
+
+  const refCalendar = useOnclickOutside(() => {
+    closeCalendar();
   });
 
+  const handleLocationChange = (location: string) => {
+    setSelectedLocation(location);
+    setLocationDropdownVisible(false);
+  };
+
+  const openLocationDropdown = () => {
+    setLocationDropdownVisible(true);
+  };
+
+  const closeLocationDropdown = () => {
+    setLocationDropdownVisible(false);
+  };
+
+
+  const refLocation = useOnclickOutside(() => {
+    closeLocationDropdown();
+  });
+
+  const handlePlaceChange = (place: string) => {
+    setSelectedPlace(place);
+    setPlaceDropdownVisible(false);
+  };
+
+  const openPlaceDropdown = () => {
+    setPlaceDropdownVisible(true);
+  };
+
+  const closePlaceDropdown = () => {
+    setPlaceDropdownVisible(false);
+  };
+
+  const refPlace = useOnclickOutside(() => {
+    closePlaceDropdown();
+  });
   return (
     <section id="Beauties">
       <Subtitle name="Beauties" /> <Title name="Hotels and Apartments" />
@@ -61,77 +103,81 @@ export function Beauties() {
         ))}
       </ul>
       <div className="search-bg">
-      <div className="search container">
-        <div className="input-dropdown" ref={ref}>
-          <label htmlFor="datepicker" className="label">
-            Date
-          </label>
-          <input
-            type="text"
-            className="input-input"
-            id="datepicker"
-            placeholder="Select date"
-            onFocus={toggleCalendar}
-            value={formateDate(selectedDate)}            readOnly
-          />
-          <div className="input-icon" onClick={toggleCalendar}>
-            {isCalendarVisible ? <FaAngleUp /> : <FaAngleDown />}
-          </div>
-          {isCalendarVisible && (
-            <Calendar
-              selectedDate={selectedDate}
-              onSelectDate={handleDateChange}
+        <div className="search container">
+          <div className="input-dropdown" ref={refCalendar}>
+            <label htmlFor="date" className="label">
+              Date
+            </label>
+            <input
+              type="text"
+              className="input-input"
+              id="date"
+              placeholder="Select date"
+              onFocus={openCalendar}
+              value={formateDate(selectedDate)}
+              readOnly
             />
-          )}
-        </div>
-        <div className="input-dropdown" ref={ref}>
-          <label htmlFor="datepicker" className="label">
-          Location
-          </label>
-          <input
-            type="text"
-            className="input-input"
-            id="datepicker"
-            placeholder="Select location"
-            onFocus={toggleCalendar}
-            value={formateDate(selectedDate)}            readOnly
-          />
-          <div className="input-icon" onClick={toggleCalendar}>
-            {isCalendarVisible ? <FaAngleUp /> : <FaAngleDown />}
+            <div className="input-icon" onClick={openCalendar}>
+              {isCalendarVisible ? <FaAngleUp /> : <FaAngleDown />}
+            </div>
+            {isCalendarVisible && (
+              <Calendar
+                selectedDate={selectedDate}
+                onSelectDate={handleDateChange}
+              />
+            )}
           </div>
-          {isCalendarVisible && (
-            <Calendar
-              selectedDate={selectedDate}
-              onSelectDate={handleDateChange}
+          <div className="input-dropdown" ref={refLocation}>
+            <label htmlFor="location" className="label">
+              Location
+            </label>
+            <input
+              type="text"
+              className="input-input"
+              id="location"
+              placeholder="Select location"
+              onFocus={openLocationDropdown}
+              value={selectedLocation}
+              readOnly
             />
-          )}
-        </div>
-        <div className="input-dropdown" ref={ref}>
-          <label htmlFor="datepicker" className="label">
-          PLACE
-          </label>
-          <input
-            type="text"
-            className="input-input"
-            id="datepicker"
-            placeholder="Select place"
-            onFocus={toggleCalendar}
-            value={formateDate(selectedDate)}            readOnly
-          />
-          <div className="input-icon" onClick={toggleCalendar}>
-            {isCalendarVisible ? <FaAngleUp /> : <FaAngleDown />}
+            <div className="input-icon" onClick={openLocationDropdown}>
+              {isLocationDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
+            </div>
+            {isLocationDropdownVisible && (
+              <LocationDropdown
+                selectedLocation={selectedLocation}
+                onSelectCity={handleLocationChange}
+              />
+            )}
           </div>
-          {isCalendarVisible && (
-            <Calendar
-              selectedDate={selectedDate}
-              onSelectDate={handleDateChange}
+          <div className="input-dropdown" ref={refPlace}>
+            <label htmlFor="place" className="label">
+              PLACE
+            </label>
+            <input
+              type="text"
+              className="input-input"
+              id="place"
+              placeholder="Select place"
+              onFocus={openPlaceDropdown}
+              value={selectedPlace}
+              readOnly
             />
-          )}
+            <div className="input-icon" onClick={openPlaceDropdown}>
+              {isPlaceDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
+            </div>
+            {isPlaceDropdownVisible && (
+              <LocationDropdown
+                selectedLocation={selectedPlace}
+                onSelectCity={handlePlaceChange}
+              />
+            )}
+          </div>
+          <button type="button" className="search-button">
+            SEARCH
+          </button>
         </div>
-        <button type="button" className="search-button">SEARCH</button>
       </div>
-      </div>
-
     </section>
   );
 }
