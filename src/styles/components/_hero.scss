@@ -1,6 +1,6 @@
 .hero {
   height: 100vh;
-  height: max-content;
+  min-height: max-content;
   width: 100vw;
   min-width: max-content;
   background-repeat: no-repeat;
@@ -9,7 +9,8 @@
 
   &-overlay {
     background: $color-overlay-light;
-    height: max-content;
+    height: 100vh;
+    min-height: max-content;
     min-width: max-content;
   }
 
