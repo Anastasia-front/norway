@@ -1,5 +1,6 @@
 .hero {
   height: 100vh;
+  height: max-content;
   width: 100vw;
   min-width: max-content;
   background-repeat: no-repeat;
@@ -8,24 +9,23 @@
 
   &-overlay {
     background: $color-overlay-light;
-    height: 100vh;
+    height: max-content;
     min-width: max-content;
   }
 
   &-content {
     @include flex(column, center, center);
     gap: 40px;
-    height: 66vh;
     max-width: 90vw;
-    padding: 70% 10px 20px;
+    padding: 30vh 10px 20px;
 
     @include mobile {
       gap: 50px;
-      padding: 50% 20px 40px;
+      padding: 30vh 20px 40px;
     }
     @include tablet {
       gap: 60px;
-      padding: 30vw 32px 60px;
+      padding: 35vh 32px 60px;
     }
     @include desktop {
       gap: 100px;
@@ -104,18 +104,27 @@
 
 .main-title {
   @include flex(column, center, center);
+  gap: 10px;
   font-size: var(--font-size-xxl);
   color: $color-white;
   font-weight: 700;
   text-transform: capitalize;
   line-height: 1;
 
+  @include mobile {
+    gap: 0;
+  }
+
   span {
     font-size: var(--font-size-sm);
     font-weight: 500;
-    letter-spacing: 16.5px;
+    letter-spacing: 10px;
     opacity: 0.7;
     text-transform: uppercase;
+
+    @include mobile {
+      letter-spacing: 16.5px;
+    }
   }
 }
 

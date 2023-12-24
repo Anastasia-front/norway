@@ -3,7 +3,7 @@ import { useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 
-import { CityDropdown,StateDropdown, Rating, Subtitle, Title } from ".";
+import { CityDropdown, Rating, StateDropdown, Subtitle, Title } from ".";
 
 import { formateDate } from "../helpers";
 
@@ -27,7 +27,7 @@ export function Beauties() {
   const [isPlaceDropdownVisible, setPlaceDropdownVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedCity, setSelectedLocation] = useState("Bergen");
-  const [selectedPlace, setSelectedPlace] = useState("Loften");
+  const [selectedPlace, setSelectedPlace] = useState("Nordland");
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -166,7 +166,7 @@ export function Beauties() {
             </div>
             {isCityDropdownVisible && (
               <CityDropdown
-              selectedState={selectedPlace}
+                selectedState={selectedPlace}
                 selectedLocation={selectedCity}
                 onSelectCity={handleLocationChange}
               />
