@@ -3,7 +3,14 @@ import { useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 
-import { CityDropdown, Rating, StateDropdown, Subtitle, Title } from ".";
+import {
+  CityDropdown,
+  Loader,
+  Rating,
+  StateDropdown,
+  Subtitle,
+  Title,
+} from ".";
 
 import { formateDate } from "../helpers";
 
@@ -28,6 +35,15 @@ export function Beauties() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedCity, setSelectedLocation] = useState("Bergen");
   const [selectedPlace, setSelectedPlace] = useState("Nordland");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      alert('Sorry, but we did not find any hotels or apartments')
+    }, 2000);
+  };
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -172,8 +188,12 @@ export function Beauties() {
               />
             )}
           </div>
-          <button type="button" className="search-button">
-            SEARCH
+          <button
+            type="button"
+            className={`search-button ${isLoading ? "not-allowed" : ""}`}
+            onClick={handleButtonClick}
+          >
+            {isLoading ? <Loader /> : "SEARCH"}
           </button>
         </div>
       </div>

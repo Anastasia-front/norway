@@ -189,7 +189,7 @@ export function MapComponent({ place }: MapComponentProps) {
           type="button"
           className={`modeToggle ${
             browserLocation && browserLocationActive ? "modeToggle-marker" : ""
-          }`}
+          } ${browserLocationLoading ? "not-allowed" : ""}`}
           onClick={handleBrowserLocation}
         >
           {browserLocationLoading ? <Loader /> : "Browser location"}
