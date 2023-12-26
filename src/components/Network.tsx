@@ -16,19 +16,19 @@ import { getAltNameFromPath } from "../helpers";
 const partners = [p1, p2, p3, p4];
 const comments = [
   {
-    name: getAltNameFromPath(per1),
+    name: "Alan Jackson",
     position: "CEO, ABC Corporation",
     img: per1,
     text: "I had the most incredible experience with this travel company during my trip to Norway. Their attention to detail and commitment to delivering exceptional service stood out. The knowledgeable staff provided valuable insights, ensuring I didn't miss any hidden gems. From seamless logistics to expertly crafted itineraries, every aspect of my journey was taken care of with precision.",
   },
   {
-    name: getAltNameFromPath(per2),
+    name: "Jane Cooper",
     position: "CEO, Travelers Community ",
     img: per2,
     text: "I applaud this travel company for their strong commitment to sustainable and responsible travel. It's refreshing to see a company actively promoting eco-friendly practices and cultural preservation. They go the extra mile to ensure that travelers not only enjoy the beauty of Norway but also contribute positively to the environment and local communities. A truly conscious and ethical approach to exploring this stunning destination.",
   },
   {
-    name: getAltNameFromPath(per3),
+    name: "Michael Pearson",
     position: "CEO, Go Travel",
     img: per3,
     text: "What sets this travel company apart is their dedication to creating personalized and unforgettable experiences. They took the time to understand my preferences and crafted a tailor-made itinerary that exceeded all expectations. From thrilling outdoor adventures to cultural immersions, every moment was curated to match my interests. The passion and commitment of the team truly made my journey through Norway one for the books.",
@@ -58,7 +58,7 @@ export function Network() {
                 </svg>
               </p>
               <div className="comment-person">
-                <img src={comment.img} alt={getAltNameFromPath(comment.img)} />
+                <img src={comment.img} alt={comment.name} />
                 <div>
                   <p> {comment.name} </p>
                   <span> {comment.position} </span>
