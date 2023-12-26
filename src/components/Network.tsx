@@ -2,14 +2,14 @@ import { BiSolidQuoteLeft } from "react-icons/bi";
 
 import { Subtitle, Title } from ".";
 
-import p3 from "../assets/png/partners/lakehouse.png";
-import p2 from "../assets/png/partners/magento.png";
-import p1 from "../assets/png/partners/microsoft.png";
-import p4 from "../assets/png/partners/midea.png";
+import p3 from "../assets/content/partners/lakehouse.webp";
+import p2 from "../assets/content/partners/magento.webp";
+import p1 from "../assets/content/partners/microsoft.webp";
+import p4 from "../assets/content/partners/midea.webp";
 
-import per1 from "../assets/png/persons/Alan Jackson.png";
-import per2 from "../assets/png/persons/Jane Cooper.png";
-import per3 from "../assets/png/persons/Michael Person.png";
+import per1 from "../assets/content/persons/AlanJackson.webp";
+import per2 from "../assets/content/persons/JaneCooper.webp";
+import per3 from "../assets/content/persons/MichaelPearson.webp";
 
 import { getAltNameFromPath } from "../helpers";
 

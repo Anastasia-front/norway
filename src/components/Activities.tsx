@@ -2,20 +2,21 @@ import { useRef, useState } from "react";
 
 import { LuMoveLeft, LuMoveRight } from "react-icons/lu";
 
-import { Subtitle, Title } from ".";
+import a7 from "../assets/content/activities//mountains.webp";
+import a1 from "../assets/content/activities/bays.webp";
+import a3 from "../assets/content/activities/coasts.webp";
+import a2 from "../assets/content/activities/fjords.webp";
+import a4 from "../assets/content/activities/hiking.webp";
+import a5 from "../assets/content/activities/kayaking.webp";
+import a6 from "../assets/content/activities/localSettlements.webp";
+import a8 from "../assets/content/activities/polarLights.webp";
+import a9 from "../assets/content/activities/sailing.webp";
+import a10 from "../assets/content/activities/skiing.webp";
 
-import a7 from "../assets/jpg/content/activities//mountains.jpg";
-import a1 from "../assets/jpg/content/activities/bays.jpg";
-import a3 from "../assets/jpg/content/activities/coasts.jpg";
-import a2 from "../assets/jpg/content/activities/fjords.jpg";
-import a4 from "../assets/jpg/content/activities/hiking.jpg";
-import a5 from "../assets/jpg/content/activities/kayaking.jpg";
-import a6 from "../assets/jpg/content/activities/local-settlements.jpg";
-import a8 from "../assets/jpg/content/activities/northern-lights.jpg";
-import a9 from "../assets/jpg/content/activities/sailing.jpg";
-import a10 from "../assets/jpg/content/activities/skiing.jpg";
 import { getAltNameFromPath } from "../helpers";
 import { useScreenQuery } from "../hooks";
+
+import { Subtitle, Title } from ".";
 
 const activities = [
   { img: a1, number: 424 },

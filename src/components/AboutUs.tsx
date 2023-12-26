@@ -1,4 +1,4 @@
-import img from "../assets/jpg/content/about-us.jpg";
+import img from "../assets/content/about/aboutUs.webp";
 
 import { getAltNameFromPath } from "../helpers";
 

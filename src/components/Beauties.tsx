@@ -14,9 +14,9 @@ import {
 
 import { formateDate } from "../helpers";
 
-import h1 from "../assets/jpg/content/beauties/bergen.jpg";
-import h2 from "../assets/jpg/content/beauties/norway.jpg";
-import h3 from "../assets/jpg/content/beauties/reine.jpg";
+import h1 from "../assets/content/beauties/bergen.webp";
+import h2 from "../assets/content/beauties/norway.webp";
+import h3 from "../assets/content/beauties/reine.webp";
 
 import { getAltNameFromPath } from "../helpers";
 
@@ -41,7 +41,7 @@ export function Beauties() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      alert('Sorry, but we did not find any hotels or apartments')
+      alert("Sorry, but we did not find any hotels or apartments");
     }, 2000);
   };
 

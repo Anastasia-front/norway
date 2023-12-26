@@ -5,5 +5,5 @@ interface Props {
 }
 
 export function LocationMarker({ position }: Props) {
-  return <Marker position={position} icon={{ url: "/location.svg" }} />;
+  return <Marker position={position} icon={{ url: "/location-green.svg" }} />;
 }

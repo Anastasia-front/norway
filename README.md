@@ -23,14 +23,13 @@ The project was implemented using the following technologies and libraries:
 
 ## Screenshots
 
-![cover](./src/assets/screenshots/1.png)
-![hero](./src/assets/screenshots/2.png)
-![activities](./src/assets/screenshots/3.png)
-![about us](./src/assets/screenshots/4.png)
-![hotel and apartments](./src/assets/screenshots/5.png)
-![network](./src/assets/screenshots/6.png)
-![footer](./src/assets/screenshots/7.png)
-
+![cover](./src/assets/screenshots/1.webp)
+![hero](./src/assets/screenshots/2.webp)
+![activities](./src/assets/screenshots/3.webp)
+![about us](./src/assets/screenshots/4.webp)
+![hotel and apartments](./src/assets/screenshots/5.webp)
+![network](./src/assets/screenshots/6.webp)
+![footer](./src/assets/screenshots/7.webp)
 
 # Default documentation of Vite.js
 
