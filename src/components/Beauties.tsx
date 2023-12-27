@@ -31,10 +31,10 @@ const hotels = [
 export function Beauties() {
   const [isCalendarVisible, setCalendarVisible] = useState(false);
   const [isCityDropdownVisible, setCityDropdownVisible] = useState(false);
-  const [isPlaceDropdownVisible, setPlaceDropdownVisible] = useState(false);
+  const [isStateDropdownVisible, setStateDropdownVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedCity, setSelectedLocation] = useState("Bergen");
-  const [selectedPlace, setSelectedPlace] = useState("Nordland");
+  const [selectedState, setSelectedState] = useState("Nordland");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = () => {
@@ -58,11 +58,15 @@ export function Beauties() {
     setCalendarVisible(false);
   };
 
+  const toggleCalendar = () => {
+    setCalendarVisible(!isCalendarVisible);
+  };
+
   const refCalendar = useOnclickOutside(() => {
     closeCalendar();
   });
 
-  const handleLocationChange = (location: string) => {
+  const handleCityChange = (location: string) => {
     setSelectedLocation(location);
     setCityDropdownVisible(false);
   };
@@ -75,25 +79,33 @@ export function Beauties() {
     setCityDropdownVisible(false);
   };
 
+  const toggleCityDropdown = () => {
+    setCityDropdownVisible(!isCityDropdownVisible);
+  };
+
   const refCity = useOnclickOutside(() => {
     closeCityDropdown();
   });
 
-  const handlePlaceChange = (place: string) => {
-    setSelectedPlace(place);
-    setPlaceDropdownVisible(false);
+  const handleStateChange = (place: string) => {
+    setSelectedState(place);
+    setStateDropdownVisible(false);
   };
 
-  const openPlaceDropdown = () => {
-    setPlaceDropdownVisible(true);
+  const openStateDropdown = () => {
+    setStateDropdownVisible(true);
   };
 
-  const closePlaceDropdown = () => {
-    setPlaceDropdownVisible(false);
+  const closeStateDropdown = () => {
+    setStateDropdownVisible(false);
+  };
+
+  const toggleStateDropdown = () => {
+    setStateDropdownVisible(!isStateDropdownVisible);
   };
 
   const refState = useOnclickOutside(() => {
-    closePlaceDropdown();
+    closeStateDropdown();
   });
   return (
     <section id="Beauties">
@@ -131,7 +143,7 @@ export function Beauties() {
               value={formateDate(selectedDate)}
               readOnly
             />
-            <div className="input-icon" onClick={openCalendar}>
+            <div className="input-icon" onClick={toggleCalendar}>
               {isCalendarVisible ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             {isCalendarVisible && (
@@ -150,17 +162,17 @@ export function Beauties() {
               className="input-input"
               id="place"
               placeholder="Select place"
-              onFocus={openPlaceDropdown}
-              value={selectedPlace}
+              onFocus={openStateDropdown}
+              value={selectedState}
               readOnly
             />
-            <div className="input-icon" onClick={openPlaceDropdown}>
-              {isPlaceDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
+            <div className="input-icon" onClick={toggleStateDropdown}>
+              {isStateDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            {isPlaceDropdownVisible && (
+            {isStateDropdownVisible && (
               <StateDropdown
-                selectedState={selectedPlace}
-                onSelectState={handlePlaceChange}
+                selectedState={selectedState}
+                onSelectState={handleStateChange}
               />
             )}
           </div>
@@ -177,14 +189,14 @@ export function Beauties() {
               value={selectedCity}
               readOnly
             />
-            <div className="input-icon" onClick={openCityDropdown}>
+            <div className="input-icon" onClick={toggleCityDropdown}>
               {isCityDropdownVisible ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             {isCityDropdownVisible && (
               <CityDropdown
-                selectedState={selectedPlace}
+                selectedState={selectedState}
                 selectedLocation={selectedCity}
-                onSelectCity={handleLocationChange}
+                onSelectCity={handleCityChange}
               />
             )}
           </div>

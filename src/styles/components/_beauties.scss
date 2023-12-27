@@ -110,7 +110,8 @@
       left: 0;
       z-index: 1;
       width: 97%;
-      height: 200px;
+      max-height: 200px;
+      height: min-content;
       overflow-y: scroll;
       border-radius: 8px;
       border: 1px solid $color-grey-1;
@@ -146,13 +147,16 @@
       }
 
       div {
-        margin-top: 30px;
+        margin: 30px 0;
       }
 
-      ul,
-      p {
+      ul {
         padding-top: 10px;
         padding-left: 80px;
+      }
+
+      p {
+        padding: 20px 10px 10px;
       }
 
       li {
@@ -209,11 +213,7 @@
   border-radius: 8px;
   border: 1px solid $color-grey-1;
   padding: 0 10px 10px;
-  width: 256px;
-
-  @include tablet {
-    width: max-content;
-  }
+  width: 248px;
 
   table {
     border-collapse: collapse;
@@ -221,7 +221,7 @@
 
   th,
   td {
-    padding: 6px;
+    padding: 3.4px;
     text-align: center;
     border: 1px solid $color-grey-2;
   }
@@ -233,7 +233,7 @@
 
   &-header {
     @include flex(row, space-between, center);
-    padding: 10px;
+    padding: 10px 0;
 
     button {
       color: $color-black;
@@ -247,7 +247,7 @@
     }
 
     span {
-      width: 50px;
+      width: 30px;
     }
 
     &__month {
