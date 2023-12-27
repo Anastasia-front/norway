@@ -35,7 +35,7 @@ export function Footer() {
           Privacy Policy
         </a>
       </nav>
-      <div className="footer-bottom container">
+      <div className="footer-bottom">
         <p>
           © 2020 Bikart Design. All rights reserved{" "}
           <span>© {currentYear} Prysiazhnaia Anastasia Developer</span>

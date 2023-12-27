@@ -4,11 +4,20 @@
   background: $color-grey-light-1;
   padding: 70px 0;
 
+  nav{
+    padding:30px 20px 0 20px;
+  }
+
   &-bottom {
     position: relative;
     padding-top: 40px;
-    @include flex(row, space-between, center);
-    gap: 50px;
+    @include flex(column-reverse, space-between, center);
+    gap: 80px;
+    width: 90%;
+
+    @include tablet{
+      flex-direction:row;
+    }
 
     &::before {
       content: "";
@@ -30,6 +39,13 @@
       font-style: normal;
       font-weight: 400;
       line-height: 24px;
+      text-align: center;
+      padding: 0 20px;
+      max-width: 90%;
+
+      @include mobile{
+        text-align: left;
+      }
 
       span {
         color: $color-grey-dark-1;
@@ -38,7 +54,10 @@
 
     ul {
       @include flex(row, center, center);
+      flex-wrap: wrap;
       gap: 30px;
+      padding: 0 20px;
+      max-width: 90%;
 
       li {
         @include flex(row, center, center);
@@ -54,13 +73,12 @@
         border-radius: 50%;
         color: $color-grey-dark-1;
 
-        &:hover{
-         background: $color-grey-1;
+        &:hover {
+          background: $color-grey-1;
 
-         svg{
-             fill: $color-grey-light-2;
-         }
-        
+          svg {
+            fill: $color-grey-light-2;
+          }
         }
       }
 
