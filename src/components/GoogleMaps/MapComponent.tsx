@@ -1,5 +1,6 @@
 import { useJsApiLoader } from "@react-google-maps/api";
 import React, { useCallback, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import {
   Autocomplete,
@@ -11,7 +12,6 @@ import {
   PlacesList,
   onPlaceSelectProps,
 } from ".";
-
 import { Loader } from "..";
 import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 
@@ -156,45 +156,93 @@ export function MapComponent({ place }: MapComponentProps) {
     }
   };
 
+  const useScreen = () => useMediaQuery({ minWidth: 0, maxWidth: 759 });
+
   return (
     <div className="map-content">
-      <div className="autocompleteWrapper addressSearchContainer">
-        <button
-          type="button"
-          className={`modeToggle ${listOpened ? "modeToggle-marker" : ""}`}
-          onClick={toggleListVisibility}
-        >
-          List of places
-        </button>
-        {listOpened && (
-          <PlacesList
-            places={places}
-            browserLocation={browserLocation}
-            onPlacesRemove={handlePlacesRemove}
-            onFindPlace={handleFindPlace}
-          />
-        )}
-        <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect} />
-        <button
-          type="button"
-          className={`modeToggle ${mode === 1 ? "modeToggle-marker" : ""}`}
-          onClick={toggleMode}
-        >
-          Set markers
-        </button>
-        <button type="button" className="modeToggle" onClick={clear}>
-          Clear
-        </button>
-        <button
-          type="button"
-          className={`modeToggle ${
-            browserLocation && browserLocationActive ? "modeToggle-marker" : ""
-          } ${browserLocationLoading ? "not-allowed" : ""}`}
-          onClick={handleBrowserLocation}
-        >
-          {browserLocationLoading ? <Loader /> : "Browser location"}
-        </button>
-      </div>
+      {useScreen() ? (
+        <>
+          <div className="autocompleteWrapper addressSearchContainer">
+            <button
+              type="button"
+              className={`modeToggle ${listOpened ? "modeToggle-marker" : ""}`}
+              onClick={toggleListVisibility}
+            >
+              List of places
+            </button>
+            {listOpened && (
+              <PlacesList
+                places={places}
+                browserLocation={browserLocation}
+                onPlacesRemove={handlePlacesRemove}
+                onFindPlace={handleFindPlace}
+              />
+            )}
+            <button
+              type="button"
+              className={`modeToggle ${mode === 1 ? "modeToggle-marker" : ""}`}
+              onClick={toggleMode}
+            >
+              Set markers
+            </button>
+            <button type="button" className="modeToggle" onClick={clear}>
+              Clear
+            </button>
+            <button
+              type="button"
+              className={`modeToggle ${
+                browserLocation && browserLocationActive
+                  ? "modeToggle-marker"
+                  : ""
+              } ${browserLocationLoading ? "not-allowed" : ""}`}
+              onClick={handleBrowserLocation}
+            >
+              {browserLocationLoading ? <Loader /> : "Browser location"}
+            </button>
+          </div>
+          <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect} />
+        </>
+      ) : (
+        <div className="autocompleteWrapper addressSearchContainer">
+          <button
+            type="button"
+            className={`modeToggle ${listOpened ? "modeToggle-marker" : ""}`}
+            onClick={toggleListVisibility}
+          >
+            List of places
+          </button>
+          {listOpened && (
+            <PlacesList
+              places={places}
+              browserLocation={browserLocation}
+              onPlacesRemove={handlePlacesRemove}
+              onFindPlace={handleFindPlace}
+            />
+          )}
+          <Autocomplete isLoaded={isLoaded} onSelect={onPlaceSelect} />
+          <button
+            type="button"
+            className={`modeToggle ${mode === 1 ? "modeToggle-marker" : ""}`}
+            onClick={toggleMode}
+          >
+            Set markers
+          </button>
+          <button type="button" className="modeToggle" onClick={clear}>
+            Clear
+          </button>
+          <button
+            type="button"
+            className={`modeToggle ${
+              browserLocation && browserLocationActive
+                ? "modeToggle-marker"
+                : ""
+            } ${browserLocationLoading ? "not-allowed" : ""}`}
+            onClick={handleBrowserLocation}
+          >
+            {browserLocationLoading ? <Loader /> : "Browser location"}
+          </button>
+        </div>
+      )}
 
       {isLoaded ? (
         <Map

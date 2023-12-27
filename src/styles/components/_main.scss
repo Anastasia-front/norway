@@ -182,6 +182,7 @@ main {
     font-size: var(--font-size-xs);
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
+    text-align: left;
 
     &:hover {
       color: $color-grey-1;
@@ -195,16 +196,23 @@ main {
 .place {
   &-list {
     @include flex(column, center, flex-start);
-    gap: 10px;
+    gap: 12px;
     position: absolute;
     z-index: 10;
-    top: 140px;
-    left: 10px;
     padding: 7px;
     background: $color-grey-light-1;
     border: 1px solid $color-black;
     border-radius: 7px;
     cursor: alias;
+    top: 114px;
+    left: 24px;
+    width: 88%;
+
+    @include tablet {
+      top: 140px;
+      left: 10px;
+      width: 100%;
+    }
   }
 
   &-item {
@@ -277,7 +285,13 @@ main {
 
 .root {
   position: relative;
-  width: 100%;
+  width: 85%;
+  margin-left: 8%;
+
+  @include tablet {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .root * {
@@ -290,6 +304,7 @@ main {
   border: 2px solid rgb(34, 34, 34);
   font-size: 1rem;
   font-weight: 700;
+  border-radius: 3px;
 }
 
 .input:focus {
@@ -325,8 +340,49 @@ main {
 .containerMap {
   margin: 0 auto;
   width: 90%;
-  height: 75%;
+  height: 55%;
   padding: 10px;
+
+  $base-height-before700: 60%;
+  $base-height-after700: 75%;
+  $increment-before700: 5%;
+  $increment-after700: 2%;
+
+  @function calculate-height($increment, $multiplier, $base-height) {
+    @return $base-height + ($increment * $multiplier);
+  }
+
+  @mixin dynamic-height-before700($multiplier) {
+    height: calculate-height(
+      $increment-before700,
+      $multiplier,
+      $base-height-before700
+    );
+  }
+
+  @mixin dynamic-height-after700($multiplier) {
+    height: calculate-height(
+      $increment-after700,
+      $multiplier,
+      $base-height-after700
+    );
+  }
+
+  @for $i from 1 through 4 {
+    $dynamic-height: $i - 1;
+
+    @media screen and (min-height: #{400px + ($i - 1) * 100px}) {
+      @include dynamic-height-before700($dynamic-height);
+    }
+  }
+
+  @for $i from 1 through 8 {
+    $dynamic-height: $i - 1;
+
+    @media screen and (min-height: #{700px + ($i - 1) * 100px}) {
+      @include dynamic-height-after700($dynamic-height);
+    }
+  }
 }
 
 .addressSearchContainer {
@@ -335,20 +391,20 @@ main {
 
 .autocompleteWrapper {
   position: relative;
-  display: flex;
-  flex-direction: row;
+  @include flex(row, center, center);
   column-gap: 10px;
   width: 90%;
   margin: 0 auto;
-
 }
 
 .modeToggle {
   background: $color-white-opacity-4;
   border: 1px solid $color-grey-2;
   cursor: pointer;
-  width: 100px;
   color: $color-black;
+  border-radius: 3px;
+  padding: 4px 7px;
+  height: 41px;
 
   &:hover {
     background: $color-grey-light-1;

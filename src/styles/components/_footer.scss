@@ -4,8 +4,8 @@
   background: $color-grey-light-1;
   padding: 70px 0;
 
-  nav{
-    padding:30px 20px 0 20px;
+  nav {
+    padding: 30px 20px 0 20px;
   }
 
   &-bottom {
@@ -15,8 +15,8 @@
     gap: 80px;
     width: 90%;
 
-    @include tablet{
-      flex-direction:row;
+    @include tablet {
+      flex-direction: row;
     }
 
     &::before {
@@ -43,7 +43,7 @@
       padding: 0 20px;
       max-width: 90%;
 
-      @include mobile{
+      @include mobile {
         text-align: left;
       }
 
