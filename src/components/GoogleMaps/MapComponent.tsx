@@ -15,9 +15,7 @@ import {
 import { Loader } from "..";
 import { fetchAddressFromCoordinates, getBrowserLocation } from "../../utils";
 
-// const API_KEY = process.env.GOOGLE_MAPS_PLATFORM_API_KEY;
-
-const API_KEY = "AIzaSyC6dezXKHPGErarv7uoLG_FyQXB3taQYz0";
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_PLATFORM_API_KEY;
 
 export function MapComponent({ place }: MapComponentProps) {
   const [center, setCenter] = useState<Location>();
