@@ -343,6 +343,7 @@ main {
   column-gap: 10px;
   width: 90%;
   margin: 0 auto;
+
 }
 
 .modeToggle {
@@ -350,12 +351,14 @@ main {
   border: 1px solid $color-grey-2;
   cursor: pointer;
   width: 100px;
+  color: $color-black;
 
   &:hover {
     background: $color-grey-light-1;
     color: $color-black;
   }
   &:active {
+    counter-reset: $color-white;
     background: $color-grey-light-2;
   }
 

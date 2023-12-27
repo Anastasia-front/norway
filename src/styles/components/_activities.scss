@@ -9,6 +9,7 @@
 
   &-button {
     @include flex(column, center, center);
+    color: $color-black;
     gap: 3px;
     font-size: 12px;
     font-style: normal;
@@ -19,6 +20,9 @@
     top: 50%;
     transform: translateY(-50%);
     padding: 10px;
+    svg {
+      fill: $color-black;
+    }
 
     &:hover {
       color: $color-grey-1;
@@ -44,6 +48,12 @@
 
     &[disabled] {
       pointer-events: none;
+
+      color: $color-grey-light-2;
+
+      svg {
+        fill: $color-grey-light-2;
+      }
     }
   }
 
