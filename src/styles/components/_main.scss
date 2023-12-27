@@ -1,14 +1,11 @@
 main {
   @include flex(column, center, center);
   gap: 3rem;
-  margin-top: -51px;
+  margin-top: -60px;
   padding: 0 0 40px 0;
 
-  @include mobile {
-    margin-top: -61px;
-  }
   @include tablet {
-    margin-top: -107px;
+    margin-top: -77px;
   }
   @include desktop {
     margin-top: -81px;
