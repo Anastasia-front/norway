@@ -18,6 +18,7 @@
 .burger {
   &-button {
     color: $color-white;
+    z-index: 10;
   }
 
   &-close {

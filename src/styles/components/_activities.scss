@@ -68,6 +68,7 @@
     li {
       width: 200px;
       height: 350px;
+      overflow-x: hidden;
 
       @include mobile {
         width: 330px;
@@ -104,10 +105,11 @@
         bottom: 60px;
         left: 20px;
         color: $color-white;
-        font-size: 32px;
+        font-size: var(--font-size-md);
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+        padding-right: 20px;
       }
       span {
         position: absolute;

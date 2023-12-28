@@ -100,7 +100,18 @@
   }
 
   &-second {
-    padding-left: 60px;
+    padding-left: 44px;
+    width: 94%;
+
+    @include tablet {
+      padding-left: 37px;
+      width: 97%;
+    }
+
+    @include desktop {
+      padding-left: 38px;
+      width: 98%;
+    }
   }
 }
 
