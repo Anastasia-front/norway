@@ -1,4 +1,4 @@
-# GoGreen website created on React + TypeScript + Vite
+# Norway website created on React + TypeScript + Vite
 
 This is beautiful website for lovers of beautiful design and plants deploy in [![Netlify Status](https://api.netlify.com/api/v1/badges/9c02b926-3595-452a-b9dc-32116e46a0c5/deploy-status)](https://app.netlify.com/sites/go-green-website/deploys)
 
@@ -14,6 +14,8 @@ This is beautiful website for lovers of beautiful design and plants deploy in [!
 ## Project overview
 
 With its help, the GoGreen company provides information about its services, as well as provides an opportunity for people to communicate with the agency and cooperate with the company.
+
+[Design here 🧩](https://www.figma.com/file/BO5uhRVEBveaASYn1d4TUI/Travel-Landing-Page---Free-(Community)-(Copy)?type=design&node-id=0-1&mode=design&t=J0OEouF3DNDxra4h-0)
 
 ## Technologies and libraries used
 
