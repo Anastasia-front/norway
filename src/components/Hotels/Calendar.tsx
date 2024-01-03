@@ -53,7 +53,7 @@ export function Calendar({ selectedDate, onSelectDate }: Props) {
 
   const renderCalendarHeader = (): JSX.Element => (
     <div className="calendar-header">
-      <div className="calendar-header__month">
+      <div className="calendar-header__period month">
         <button onClick={() => handleMonthChange(currentMonth - 1)}>
           <FaAngleLeft />
         </button>
@@ -66,7 +66,7 @@ export function Calendar({ selectedDate, onSelectDate }: Props) {
           <FaAngleRight />
         </button>
       </div>
-      <>
+      <div className="calendar-header__period">
         <button onClick={() => handleYearChange(currentYear - 1)}>
           <FaAngleLeft />
         </button>
@@ -74,7 +74,7 @@ export function Calendar({ selectedDate, onSelectDate }: Props) {
         <button onClick={() => handleYearChange(currentYear + 1)}>
           <FaAngleRight />
         </button>
-      </>
+      </div>
     </div>
   );
 

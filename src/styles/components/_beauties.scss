@@ -211,19 +211,24 @@
   background-color: $color-grey-light-2;
   box-shadow: 0 0 5px $color-white-opacity-1;
   border-radius: 8px;
-  border: 1px solid $color-grey-1;
+  border: 0.1px solid $color-grey-1;
   padding: 0 10px 10px;
   width: 248px;
 
   table {
     border-collapse: collapse;
+    font-size: smaller;
   }
 
   th,
   td {
-    padding: 3.4px;
+    width: 35px;
+    height: 30px;
     text-align: center;
     border: 1px solid $color-grey-2;
+  }
+  th {
+    font-size: x-small;
   }
 
   td:hover {
@@ -233,6 +238,7 @@
 
   &-header {
     @include flex(row, space-between, center);
+    gap: 20px;
     padding: 10px 0;
 
     button {
@@ -247,15 +253,22 @@
     }
 
     span {
-      width: 30px;
+      width: 12px;
     }
 
-    &__month {
+    .month {
+      width: 140px;
+    }
+
+    &__period {
       @include flex(row, space-between, center);
+      font-size: medium;
+
       span {
         display: block;
-        width: 100px;
+        width: min-content;
         text-align: center;
+        padding: 0 12px;
       }
     }
   }
